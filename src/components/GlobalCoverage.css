@@ -1,0 +1,97 @@
+.global { overflow: hidden; }
+
+.global__glow {
+  width: 760px;
+  height: 620px;
+  left: 50%;
+  top: 28%;
+  transform: translateX(-50%);
+  background: hsl(var(--cdm-teal) / 0.13);
+}
+
+/* ── cobe globe ─────────────────────────────────────────────────────────── */
+.globe {
+  position: relative;
+  width: min(560px, 100%);
+  margin: 0.5rem auto 0;
+  aspect-ratio: 1;
+}
+
+/* ── Country chips pinned to the globe ──────────────────────────────────── */
+.globe__chips { position: absolute; inset: 0; pointer-events: none; }
+
+.globe__chip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4375rem;
+  padding: 0.3125rem 0.75rem;
+  border-radius: var(--r-pill);
+  background: hsl(0 0% 100% / 0.94);
+  border: 1px solid var(--hairline);
+  box-shadow: 0 6px 18px -10px hsl(var(--foreground) / 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: transform, opacity;
+}
+.globe__chip i {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  flex-shrink: 0;
+}
+.globe__chip.is-home { font-weight: 600; }
+.globe__chip.is-home i { background: hsl(var(--cdm-green)); }
+
+.globe__canvas {
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: pan-y;
+  contain: layout paint size;
+}
+.globe__canvas:active { cursor: grabbing; }
+
+/* ── Country list ───────────────────────────────────────────────────────── */
+.global__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.625rem;
+  margin-top: 2.5rem;
+}
+.global__list li {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.4375rem 1rem;
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  box-shadow: var(--shadow-card);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink-72);
+}
+.global__dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  flex-shrink: 0;
+}
+.global__list li.is-home { color: hsl(var(--cdm-green)); font-weight: 600; }
+.global__list li.is-home .global__dot { background: hsl(var(--cdm-green)); }
+
+@media (max-width: 640px) {
+  .globe { width: 100%; }
+}

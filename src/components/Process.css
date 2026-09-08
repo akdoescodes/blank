@@ -1,0 +1,244 @@
+.process { overflow: hidden; }
+
+.process__glow {
+  width: 900px;
+  height: 500px;
+  right: -200px;
+  bottom: 4%;
+  background: hsl(var(--primary) / 0.12);
+}
+
+/* ── Wave timeline ──────────────────────────────────────────────────────── */
+.wave { margin: 4.5rem 0 5rem; }
+
+.wave__rail { position: relative; height: 132px; }
+
+.wave__svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  /* Fade the line where it runs past the track so the ends look deliberate. */
+  mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 5%, #000 95%, transparent 100%);
+}
+
+.wave__line,
+.wave__progress {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.wave__line {
+  stroke: var(--ink-14);
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+}
+
+/* Driven per frame from JS — no CSS transition, or it would fight the sweep. */
+.wave__progress {
+  stroke: hsl(var(--primary));
+  stroke-width: 2.5;
+  stroke-dasharray: 100;
+  stroke-dashoffset: 100;
+  opacity: 0;
+}
+
+/* The travelling head of the line, so the next step is visibly coming. */
+.wave__comet {
+  fill: hsl(var(--primary));
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  filter: drop-shadow(0 0 6px hsl(var(--primary) / 0.7));
+}
+
+/* Draw the track in, then reveal the moving stroke on top of it. */
+.reveal.is-in .wave__line {
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1.5s cubic-bezier(0.33, 1, 0.68, 1);
+}
+.reveal.is-in .wave__progress {
+  opacity: 1;
+  transition: opacity 0.4s ease 0.5s;
+}
+
+.wave__nodes { position: absolute; inset: 0; }
+
+/* Anchor each node by its DOT (13px, so 6.5px to its centre) rather than by the
+   centre of the label+dot block, so every dot lands exactly on the curve. */
+.wave__node {
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+.wave__node.is-above { transform: translate(-50%, calc(-100% + 6.5px)); }
+.wave__node.is-below { transform: translate(-50%, -6.5px); }
+
+.reveal.is-in .wave__node { opacity: 1; }
+
+.wave__btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0;
+}
+.wave__node.is-below .wave__btn { flex-direction: column-reverse; }
+
+/* Ring the dot instead of drawing a box around the whole label block. */
+.wave__btn:focus-visible { outline: none; }
+.wave__btn:focus-visible .wave__dot {
+  box-shadow: 0 0 0 4px hsl(var(--primary) / 0.35);
+  border-color: hsl(var(--primary));
+}
+.wave__btn:focus-visible .wave__name { color: hsl(var(--primary)); }
+
+.wave__label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: 1.35;
+  white-space: nowrap;
+  transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.wave__btn:hover .wave__label { transform: translateY(-3px); }
+.wave__node.is-below .wave__btn:hover .wave__label { transform: translateY(3px); }
+
+.wave__name {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ink-72);
+  transition: color 0.25s ease;
+}
+.wave__sub {
+  font-size: 0.8125rem;
+  color: var(--ink-52);
+  transition: color 0.25s ease;
+}
+
+.wave__dot {
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1.5px solid var(--ink-28);
+  transition: background 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.3s ease, transform 0.3s cubic-bezier(0.34, 1.4, 0.64, 1),
+    box-shadow 0.3s ease;
+}
+
+/* Stages already passed keep the blue dot, unfilled. */
+.wave__node.is-done .wave__dot { border-color: hsl(var(--primary)); background: var(--surface); }
+.wave__node.is-done .wave__name { color: var(--ink); }
+
+.wave__node.is-active .wave__name { color: hsl(var(--primary)); }
+.wave__node.is-active .wave__sub { color: hsl(var(--primary) / 0.75); }
+.wave__node.is-active .wave__dot {
+  background: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+  transform: scale(1.4);
+  box-shadow: 0 0 0 6px hsl(var(--primary) / 0.16);
+}
+.wave__btn:hover .wave__dot { border-color: hsl(var(--primary)); }
+
+/* ── Stage detail ───────────────────────────────────────────────────────── */
+.stage {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 2rem 3.5rem;
+  align-items: start;
+}
+
+.stage__index,
+.stage__main { animation: stage-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.stage__main { animation-delay: 60ms; }
+
+@keyframes stage-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+.stage__index { display: grid; }
+.stage__index-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: hsl(var(--primary));
+  margin-bottom: 0.25rem;
+}
+.stage__index-n {
+  font-family: var(--font-display);
+  font-size: 4.5rem;
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  color: var(--ink-14);
+}
+
+.stage__title { margin-bottom: 0.875rem; }
+.stage__body {
+  color: var(--ink-72);
+  line-height: 1.7;
+  max-width: 46ch;
+}
+
+.stage__gets { padding-left: 2.5rem; border-left: 1px solid var(--hairline); }
+.stage__gets-label {
+  font-size: 0.875rem;
+  color: var(--ink-52);
+  margin-bottom: 1rem;
+}
+.stage__gets li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  font-size: 0.9875rem;
+  font-weight: 500;
+  animation: stage-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+.stage__bullet {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: hsl(var(--cdm-green));
+  flex-shrink: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wave__line, .wave__progress { stroke-dashoffset: 0 !important; opacity: 1; }
+  .wave__node { opacity: 1; }
+}
+
+@media (max-width: 1024px) {
+  .stage { grid-template-columns: auto minmax(0, 1fr); }
+  .stage__gets {
+    grid-column: 1 / -1;
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid var(--hairline);
+    padding-top: 1.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  /* The track keeps its full width and scrolls horizontally. */
+  .wave {
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin: 3rem 0 3.5rem;
+    padding-bottom: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+  .wave__rail { width: 880px; height: 150px; }
+}
+
+@media (max-width: 640px) {
+  .stage { grid-template-columns: 1fr; gap: 1.25rem; }
+  .stage__index { display: flex; align-items: baseline; gap: 0.625rem; }
+  .stage__index-n { font-size: 2.5rem; }
+  .stage__index-label { margin-bottom: 0; }
+}

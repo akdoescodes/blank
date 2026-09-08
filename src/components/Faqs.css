@@ -1,0 +1,90 @@
+.faqs { overflow: hidden; }
+
+.faqs__glow {
+  width: 700px;
+  height: 520px;
+  left: -180px;
+  top: 20%;
+  background: hsl(var(--primary) / 0.1);
+}
+
+.faqs__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: 3rem 5rem;
+  align-items: start;
+}
+
+.faqs__lede {
+  color: var(--ink-72);
+  line-height: 1.7;
+  margin-top: 1.5rem;
+  max-width: 34ch;
+}
+
+/* ── Accordion ──────────────────────────────────────────────────────────── */
+.faqs__list { display: grid; }
+
+.faq { border-bottom: 1px solid var(--hairline); }
+.faq:first-child { border-top: 1px solid var(--hairline); }
+
+.faq__q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  width: 100%;
+  padding: 1.625rem 0;
+  text-align: left;
+  font-family: var(--font-display);
+  font-size: 1.1875rem;
+  font-weight: 600;
+  letter-spacing: -0.014em;
+  color: var(--ink);
+  transition: color 0.18s ease;
+}
+.faq__q:hover { color: hsl(var(--primary)); }
+
+.faq__toggle {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid var(--hairline);
+  color: var(--ink-72);
+  flex-shrink: 0;
+  transition: transform 0.28s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.faq.is-open .faq__toggle {
+  transform: rotate(45deg);
+  background: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+  color: #fff;
+}
+
+.faq__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 0.35s cubic-bezier(0.22, 1, 0.36, 1), visibility 0.35s;
+}
+.faq.is-open .faq__panel { grid-template-rows: 1fr; visibility: visible; }
+
+.faq__panel-inner { overflow: hidden; }
+.faq__panel p {
+  padding-bottom: 1.625rem;
+  padding-right: 3rem;
+  color: var(--ink-72);
+  line-height: 1.75;
+  font-size: 1.0625rem;
+}
+
+@media (max-width: 1024px) {
+  .faqs__layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .faqs__lede { max-width: 100%; }
+}
+@media (max-width: 640px) {
+  .faq__q { font-size: 1.0625rem; gap: 1rem; padding: 1.25rem 0; }
+  .faq__panel p { padding-right: 0; font-size: 1rem; }
+}

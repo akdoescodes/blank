@@ -1,0 +1,160 @@
+import { WORK } from '../data/site';
+import { ArrowUpRight } from './Icons';
+import { useReveal } from './useReveal';
+import './Work.css';
+
+/**
+ * Device-mockup placeholder: monitor + laptop + phone, matching the
+ * composition used on nexasoftech.com. Tinted from the project palette.
+ */
+function DeviceMock({ hue }: { hue: number }) {
+  const bars = [70, 92, 54, 80, 44];
+  return (
+    <div className="mock" style={{ ['--mock-hue' as string]: hue }} aria-hidden="true">
+      <div className="mock__monitor">
+        <div className="mock__screen">
+          <span className="mock__chrome">
+            <i /><i /><i />
+          </span>
+          <span className="mock__hero-bar" />
+          <span className="mock__lines">
+            {bars.map((w, i) => (
+              <i key={i} style={{ width: `${w}%` }} />
+            ))}
+          </span>
+          <span className="mock__tiles">
+            <i /><i /><i />
+          </span>
+        </div>
+        <span className="mock__stand" />
+      </div>
+
+      <div className="mock__laptop">
+        <div className="mock__screen mock__screen--sm">
+          <span className="mock__hero-bar" />
+          <span className="mock__lines">
+            <i style={{ width: '82%' }} />
+            <i style={{ width: '60%' }} />
+            <i style={{ width: '74%' }} />
+          </span>
+        </div>
+        <span className="mock__base" />
+      </div>
+
+      <div className="mock__phone">
+        <div className="mock__screen mock__screen--xs">
+          <span className="mock__notch" />
+          <span className="mock__hero-bar" />
+          <span className="mock__lines">
+            <i style={{ width: '88%' }} />
+            <i style={{ width: '62%' }} />
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+const HUES = [200, 175, 145];
+
+export default function Work() {
+  const ref = useReveal<HTMLDivElement>();
+  const [lead, ...rest] = WORK.items;
+
+  return (
+    <section className="section work" id="work">
+      <div className="bg-stripes" />
+      <div className="glow work__glow" />
+
+      <div className="shell reveal" ref={ref}>
+        <header className="sec-head">
+          <div>
+            <span className="eyebrow">{WORK.eyebrow}</span>
+            <h2 className="display-2">{WORK.title}</h2>
+          </div>
+          <p className="sec-head__lede">{WORK.lede}</p>
+        </header>
+
+        {/* ── Lead case study: media left, detail right ─────────────────── */}
+        <article className="case case--lead card">
+          <div className="case__media">
+            <DeviceMock hue={HUES[0]} />
+          </div>
+
+          <div className="case__body">
+            <ul className="case__tags">
+              {lead.tags.map((t, i) => (
+                <li key={t} className={`chip${i === 0 ? ' chip--accent' : ''}`}>
+                  {t}
+                </li>
+              ))}
+            </ul>
+
+            <h3 className="case__title">{lead.tagline}</h3>
+            <p className="case__text">{lead.body}</p>
+
+            <ul className="case__metrics">
+              {lead.metrics.map((m) => (
+                <li key={m.label}>
+                  <span className="case__metric-value">{m.value}</span>
+                  <span className="case__metric-label">{m.label}</span>
+                </li>
+              ))}
+            </ul>
+
+            <footer className="case__foot">
+              <span className="case__stack">{lead.stack}</span>
+              <a href="#contact" className="arrow-link case__link">
+                {lead.link} <ArrowUpRight />
+              </a>
+            </footer>
+          </div>
+        </article>
+
+        {/* ── Secondary case studies ───────────────────────────────────── */}
+        <div className="work__pair">
+          {rest.map((p, i) => (
+            <article key={p.name} className="case case--sm card">
+              <div className="case__media">
+                <DeviceMock hue={HUES[i + 1]} />
+              </div>
+
+              <div className="case__body">
+                <ul className="case__tags">
+                  {p.tags.map((t) => (
+                    <li key={t} className="chip chip--accent">
+                      {t}
+                    </li>
+                  ))}
+                </ul>
+
+                <h3 className="case__title case__title--sm">{p.tagline}</h3>
+                <p className="case__text">{p.body}</p>
+
+                <ul className="case__metrics case__metrics--inline">
+                  {p.metrics.map((m) => (
+                    <li key={m.label}>
+                      <span className="case__metric-value">{m.value}</span>
+                      <span className="case__metric-label">{m.label}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <footer className="case__foot">
+                  <span className="case__stack">{p.stack}</span>
+                  <a href="#contact" className="arrow-link case__link">
+                    {p.link} <ArrowUpRight />
+                  </a>
+                </footer>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        <a href="#contact" className="arrow-link arrow-link--lg arrow-link--center">
+          {WORK.cta} <ArrowUpRight width={18} height={18} />
+        </a>
+      </div>
+    </section>
+  );
+}

@@ -1,0 +1,78 @@
+.recognitions { overflow: hidden; }
+
+.recognitions__glow {
+  width: 720px;
+  height: 400px;
+  left: 50%;
+  top: 30%;
+  transform: translateX(-50%);
+  background: hsl(var(--cdm-teal) / 0.14);
+}
+
+.recognitions__row {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+}
+
+.badge { display: grid; justify-items: center; gap: 1rem; }
+
+.badge__inner {
+  display: grid;
+  place-items: center;
+  width: 168px;
+  height: 168px;
+  border-radius: 50%;
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  box-shadow: 0 18px 44px -24px hsl(var(--foreground) / 0.45);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.badge:hover .badge__inner {
+  transform: translateY(-4px);
+  box-shadow: 0 26px 56px -24px hsl(var(--foreground) / 0.55);
+}
+
+/* ── BusinessFirms hex ──────────────────────────────────────────────────── */
+.badge__inner--bf { position: relative; }
+.badge__hex { position: absolute; width: 96px; color: hsl(var(--foreground) / 0.92); }
+
+.badge__bf {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 0.1875rem;
+  color: #fff;
+  text-align: center;
+}
+.badge__verified {
+  font-size: 0.5rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+.badge__bf strong { font-size: 0.6875rem; letter-spacing: -0.01em; }
+.badge__stars { display: flex; gap: 1px; color: hsl(var(--cdm-green)); }
+
+/* ── Shopify ────────────────────────────────────────────────────────────── */
+.badge__inner--shopify { gap: 0.5rem; grid-auto-flow: row; }
+.badge__bag { width: 34px; color: hsl(var(--cdm-green)); }
+.badge__word {
+  display: grid;
+  justify-items: center;
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  line-height: 1.1;
+}
+.badge__word em { font-style: italic; font-weight: 500; font-size: 0.8125rem; color: var(--ink-72); }
+
+.badge__caption { font-size: 0.9375rem; color: var(--ink-72); }
+
+@media (max-width: 640px) {
+  .recognitions__row { gap: 2rem; }
+  .badge__inner { width: 140px; height: 140px; }
+}

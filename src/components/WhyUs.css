@@ -1,0 +1,98 @@
+.why { overflow: hidden; }
+
+.why__glow {
+  width: 720px;
+  height: 620px;
+  left: -220px;
+  top: 12%;
+  background: hsl(var(--cdm-teal) / 0.16);
+}
+
+.why__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
+  gap: 4rem 5rem;
+  align-items: start;
+}
+
+.why__title { max-width: 14ch; margin-bottom: 1.5rem; }
+
+.why__body {
+  color: var(--ink-72);
+  line-height: 1.7;
+  margin-bottom: 2rem;
+  max-width: 40ch;
+}
+
+.why__pills { display: flex; flex-wrap: wrap; gap: 0.625rem; margin-bottom: 2.5rem; }
+.why__pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.0625rem;
+  border-radius: var(--r-pill);
+  background: var(--surface);
+  border: 1px solid var(--hairline);
+  box-shadow: var(--shadow-card);
+  font-size: 0.9375rem;
+  font-weight: 500;
+}
+.why__pill-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.why__pill-dot--a { background: hsl(var(--primary)); }
+.why__pill-dot--b { background: hsl(var(--cdm-green)); }
+
+/* ── Numbered points list ───────────────────────────────────────────────── */
+.why__points { display: grid; }
+
+.why-point {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  gap: 1.5rem 2rem;
+  align-items: start;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--hairline);
+  transition: opacity 0.2s ease;
+}
+.why-point:first-child { padding-top: 0.5rem; }
+.why-point:last-child { border-bottom: none; }
+
+.why-point__n {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: var(--ink-28);
+  transition: color 0.22s ease;
+}
+.why-point:hover .why-point__n { color: hsl(var(--primary)); }
+
+.why-point__title {
+  font-size: 1.3125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.625rem;
+}
+
+.why-point__body {
+  font-size: 0.9875rem;
+  line-height: 1.7;
+  color: var(--ink-72);
+  max-width: 52ch;
+}
+
+.why-point__arrow {
+  color: var(--ink-28);
+  transition: color 0.22s ease, transform 0.22s ease;
+  margin-top: 0.375rem;
+}
+.why-point:hover .why-point__arrow { color: hsl(var(--primary)); transform: translate(2px, -2px); }
+
+@media (max-width: 1024px) {
+  .why__layout { grid-template-columns: 1fr; gap: 3rem; }
+  .why__body { max-width: 100%; }
+}
+@media (max-width: 640px) {
+  .why-point { grid-template-columns: auto minmax(0, 1fr); gap: 1rem 1.125rem; padding: 1.5rem 0; }
+  .why-point__arrow { display: none; }
+  .why-point__n { font-size: 1.375rem; }
+}
