@@ -35,9 +35,13 @@
   font-size: 0.9375rem;
   font-weight: 500;
 }
-.why__pill-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-.why__pill-dot--a { background: hsl(var(--primary)); }
-.why__pill-dot--b { background: hsl(var(--cdm-green)); }
+.why__pill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  flex-shrink: 0;
+}
 
 /* ── Numbered points list ───────────────────────────────────────────────── */
 .why__points { display: grid; }
@@ -62,7 +66,7 @@
   color: var(--ink-28);
   transition: color 0.22s ease;
 }
-.why-point:hover .why-point__n { color: hsl(var(--primary)); }
+.why-point:hover .why-point__n { color: var(--ink); }
 
 .why-point__title {
   font-size: 1.3125rem;

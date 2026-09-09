@@ -19,9 +19,9 @@ export default function WhyUs() {
             <p className="why__body">{WHY.body}</p>
 
             <ul className="why__pills">
-              {WHY.pills.map((p, i) => (
+              {WHY.pills.map((p) => (
                 <li key={p} className="why__pill">
-                  <span className={`why__pill-dot why__pill-dot--${i % 2 === 0 ? 'a' : 'b'}`} />
+                  <span className="why__pill-dot" />
                   {p}
                 </li>
               ))}
