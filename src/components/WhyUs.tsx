@@ -14,7 +14,7 @@ export default function WhyUs() {
       <div className="shell reveal" ref={ref}>
         <div className="why__layout">
           <div className="why__intro">
-            <span className="eyebrow eyebrow--solid">{WHY.eyebrow}</span>
+            <span className="eyebrow">{WHY.eyebrow}</span>
             <h2 className="display-2 why__title">{WHY.title}</h2>
             <p className="why__body">{WHY.body}</p>
 
