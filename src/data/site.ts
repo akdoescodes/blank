@@ -65,45 +65,6 @@ export const HERO = {
   note: '30-minute technical call with an engineer. No pressure. No sales pitch.',
 };
 
-/** Draggable board in the hero. Reads like a real sprint, not lorem. */
-export const HERO_BOARD = [
-  {
-    id: 'backlog',
-    title: 'Backlog',
-    cards: [
-      { id: 'c1', title: 'Multi-tenant billing', tag: 'Payments', who: 'RS' },
-      { id: 'c2', title: 'Rate limit the API gateway', tag: 'Platform', who: 'AK' },
-    ],
-  },
-  {
-    id: 'progress',
-    title: 'In progress',
-    cards: [
-      { id: 'c3', title: 'Stripe webhook retries', tag: 'Payments', who: 'MJ' },
-      { id: 'c4', title: 'Postgres read replica', tag: 'Infra', who: 'RS' },
-    ],
-  },
-  {
-    id: 'shipped',
-    title: 'Shipped',
-    cards: [
-      { id: 'c5', title: 'SSO with Okta', tag: 'Auth', who: 'AK' },
-      { id: 'c6', title: 'CI cache: 4m to 90s', tag: 'DevOps', who: 'MJ' },
-    ],
-  },
-];
-
-export const HERO_PIPELINE = {
-  env: 'production',
-  version: 'v2.14.0',
-  steps: ['Build', 'Test', 'Scan', 'Deploy'],
-  metrics: [
-    { label: 'Uptime', value: '99.98%' },
-    { label: 'p95', value: '142ms' },
-    { label: 'Coverage', value: '87%' },
-  ],
-};
-
 export const STATS = {
   title: 'Small Team. Real Production Experience.',
   link: 'See Our Work',
