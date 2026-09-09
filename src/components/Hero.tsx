@@ -12,7 +12,7 @@ import {
   type DragEndEvent,
   type DragStartEvent,
 } from '@dnd-kit/core';
-import { HERO, HERO_BOARD, HERO_PIPELINE } from '../data/site';
+import { HERO, HERO_BOARD, HERO_LOG, HERO_PIPELINE } from '../data/site';
 import { ArrowUpRight, Check } from './Icons';
 import './Hero.css';
 
@@ -144,6 +144,36 @@ function DeployRail() {
   );
 }
 
+/* ── Release log ────────────────────────────────────────────────────────── */
+function ReleaseLog() {
+  const [n, setN] = useState(HERO_LOG.length);
+
+  // Reveal one line at a time, then start the release over.
+  useEffect(() => {
+    const reduced =
+      typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
+    const id = window.setInterval(() => {
+      setN((v) => (v >= HERO_LOG.length ? 1 : v + 1));
+    }, 1400);
+    return () => window.clearInterval(id);
+  }, []);
+
+  const shown = HERO_LOG.slice(Math.max(0, n - 3), n);
+
+  return (
+    <div className="term">
+      {shown.map((l) => (
+        <p key={l.text} className={`term__line term__line--${l.k}`}>
+          <span className="term__sign">{l.k === 'cmd' ? '$' : l.k === 'ok' ? '✓' : '·'}</span>
+          {l.text}
+        </p>
+      ))}
+      <span className="term__caret" aria-hidden="true" />
+    </div>
+  );
+}
+
 /* ── Hero ───────────────────────────────────────────────────────────────── */
 export default function Hero() {
   const [cols, setCols] = useState<Column[]>(() => HERO_BOARD.map((c) => ({ ...c, cards: [...c.cards] })));
@@ -179,23 +209,6 @@ export default function Hero() {
 
   return (
     <section className="hero" id="top">
-      {/* Abstract line field */}
-      <div className="hero__lines" aria-hidden="true">
-        <svg viewBox="0 0 1440 620" preserveAspectRatio="none">
-          {Array.from({ length: 9 }, (_, i) => {
-            const d = `M -80 ${40 + i * 68} C 320 ${i * 62 - 30}, 760 ${180 + i * 52}, 1520 ${20 + i * 64}`;
-            return (
-              <g key={i}>
-                {/* A faint constant line, with a brighter segment running along it. */}
-                <path className="hero__line" d={d} />
-                <path className="hero__spark" d={d} style={{ animationDelay: `${i * 0.55}s` }} />
-              </g>
-            );
-          })}
-        </svg>
-      </div>
-      <div className="hero__grid" aria-hidden="true" />
-
       <div className="hero__inner shell">
         <h1 className="hero__title">
           <span className="hero__lead">{HERO.titleLead}</span>
@@ -242,6 +255,7 @@ export default function Hero() {
             </DndContext>
 
             <DeployRail />
+            <ReleaseLog />
           </div>
         </div>
       </div>

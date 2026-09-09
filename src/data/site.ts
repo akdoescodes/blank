@@ -60,7 +60,7 @@ export const HERO = {
   titleLead: 'Built in India,',
   titlePrefix: 'hosted in',
   /** Cycled one at a time under "hosted in". */
-  places: ['Europe', 'Australia', 'USA', 'Turkey', 'Poland', 'Canada'],
+  places: ['Europe', 'Australia', 'Germany', 'Turkey', 'Poland', 'Canada'],
   cta: 'Talk to an Expert',
   note: '30-minute technical call with an engineer. No pressure. No sales pitch.',
 };
@@ -103,6 +103,16 @@ export const HERO_PIPELINE = {
     { label: 'Coverage', value: '87%' },
   ],
 };
+
+/** Release log that streams under the board. `k` styles the line. */
+export const HERO_LOG: Array<{ k: 'cmd' | 'ok' | 'info'; text: string }> = [
+  { k: 'cmd', text: 'git push origin main' },
+  { k: 'info', text: 'ci: 128 tests, 0 failures' },
+  { k: 'cmd', text: 'docker push registry/api:2.14.0' },
+  { k: 'info', text: 'deploy: rolling out 3/3 pods' },
+  { k: 'ok', text: 'health check passed in 142ms' },
+  { k: 'ok', text: 'released v2.14.0 to production' },
+];
 
 export const STATS = {
   title: 'Small Team. Real Production Experience.',
