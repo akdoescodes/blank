@@ -1,17 +1,15 @@
 .why { overflow: hidden; }
 
 .why__glow {
-  width: 720px;
-  height: 620px;
-  left: -220px;
-  top: 12%;
+  --glow-x: 10%;
+  --glow-y: 45%;
   --glow: hsl(var(--cdm-teal) / 0.16);
 }
 
 .why__layout {
   display: grid;
   grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-  gap: 4rem 5rem;
+  gap: 3rem 4.5rem;
   align-items: start;
 }
 

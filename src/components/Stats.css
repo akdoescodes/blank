@@ -1,11 +1,8 @@
 .stats { padding-top: 0; overflow: hidden; }
 
 .stats__glow {
-  width: 900px;
-  height: 420px;
-  left: 50%;
-  top: -120px;
-  transform: translateX(-50%);
+  --glow-x: 50%;
+  --glow-y: 40%;
   --glow: hsl(var(--cdm-teal) / 0.18);
 }
 

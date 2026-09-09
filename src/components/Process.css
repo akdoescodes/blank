@@ -1,15 +1,13 @@
 .process { overflow: hidden; }
 
 .process__glow {
-  width: 900px;
-  height: 500px;
-  right: -200px;
-  bottom: 4%;
+  --glow-x: 90%;
+  --glow-y: 58%;
   --glow: hsl(var(--primary) / 0.12);
 }
 
 /* ── Wave timeline ──────────────────────────────────────────────────────── */
-.wave { margin: 4.5rem 0 5rem; }
+.wave { margin: 3.25rem 0 3.5rem; }
 
 .wave__rail { position: relative; height: 132px; }
 

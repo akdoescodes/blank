@@ -1,11 +1,8 @@
 .contact { overflow: hidden; }
 
 .contact__glow {
-  width: 820px;
-  height: 560px;
-  left: 50%;
-  top: 18%;
-  transform: translateX(-50%);
+  --glow-x: 50%;
+  --glow-y: 45%;
   --glow: hsl(var(--cdm-teal) / 0.15);
 }
 

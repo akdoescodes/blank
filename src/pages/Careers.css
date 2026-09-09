@@ -7,10 +7,8 @@
 .careers-hero { overflow: hidden; padding-top: 5.5rem; }
 
 .careers-hero__glow {
-  width: 820px;
-  height: 560px;
-  right: -160px;
-  top: -80px;
+  --glow-x: 88%;
+  --glow-y: 42%;
   --glow: hsl(var(--cdm-teal) / 0.16);
 }
 
@@ -147,10 +145,8 @@
 /* ── Perks grid ─────────────────────────────────────────────────────────── */
 .careers-work { overflow: hidden; }
 .careers-work__glow {
-  width: 760px;
-  height: 520px;
-  left: -180px;
-  top: 14%;
+  --glow-x: 10%;
+  --glow-y: 44%;
   --glow: hsl(var(--cdm-green) / 0.12);
 }
 
@@ -172,11 +168,8 @@
 /* ── Fit columns ────────────────────────────────────────────────────────── */
 .fit { overflow: hidden; }
 .fit__glow {
-  width: 780px;
-  height: 520px;
-  left: 50%;
-  top: 10%;
-  transform: translateX(-50%);
+  --glow-x: 50%;
+  --glow-y: 42%;
   --glow: hsl(var(--primary) / 0.1);
 }
 
@@ -230,10 +223,8 @@
 /* ── Hiring steps ───────────────────────────────────────────────────────── */
 .hiring { overflow: hidden; }
 .hiring__glow {
-  width: 800px;
-  height: 520px;
-  right: -180px;
-  top: 12%;
+  --glow-x: 90%;
+  --glow-y: 44%;
   --glow: hsl(var(--cdm-teal) / 0.13);
 }
 
@@ -329,11 +320,8 @@
 /* ── Application form ───────────────────────────────────────────────────── */
 .apply { overflow: hidden; }
 .apply__glow {
-  width: 820px;
-  height: 560px;
-  left: 50%;
-  top: 16%;
-  transform: translateX(-50%);
+  --glow-x: 50%;
+  --glow-y: 45%;
   --glow: hsl(var(--cdm-teal) / 0.15);
 }
 

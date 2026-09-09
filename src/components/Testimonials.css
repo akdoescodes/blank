@@ -1,10 +1,8 @@
 .quotes { overflow: hidden; }
 
 .quotes__glow {
-  width: 820px;
-  height: 560px;
-  right: -180px;
-  top: 10%;
+  --glow-x: 90%;
+  --glow-y: 44%;
   --glow: hsl(var(--cdm-teal) / 0.14);
 }
 

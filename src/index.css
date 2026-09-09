@@ -112,8 +112,8 @@ input, textarea { font: inherit; color: inherit; }
   padding: 0 var(--gutter);
 }
 
-.section { position: relative; padding: 6.25rem 0; }
-.section--tight { padding: 5rem 0; }
+.section { position: relative; padding: 4.5rem 0; }
+.section--tight { padding: 3.5rem 0; }
 
 /* Two-column section header: title left, lede right — nexasoftech pattern */
 .sec-head {
@@ -121,7 +121,7 @@ input, textarea { font: inherit; color: inherit; }
   grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
   gap: 2rem 4rem;
   align-items: end;
-  margin-bottom: 3.5rem;
+  margin-bottom: 2.75rem;
 }
 /* Constrain the measure so headings break onto the same lines as the original. */
 .sec-head h2 { max-width: var(--head-w, 17ch); }
@@ -235,7 +235,7 @@ input, textarea { font: inherit; color: inherit; }
 .arrow-link svg { transition: transform 0.18s ease; }
 .arrow-link:hover svg { transform: translate(2px, -2px); }
 .arrow-link--lg { font-family: var(--font-display); font-size: 1.375rem; letter-spacing: -0.02em; }
-.arrow-link--center { display: flex; justify-content: center; margin-top: 3.5rem; }
+.arrow-link--center { display: flex; justify-content: center; margin-top: 2.5rem; }
 
 /* ── Card ───────────────────────────────────────────────────────────────── */
 .card {
@@ -296,14 +296,21 @@ input, textarea { font: inherit; color: inherit; }
   -webkit-mask-image: radial-gradient(ellipse 90% 80% at 50% 50%, #000 30%, transparent 100%);
 }
 
-/* Soft colour wash that bleeds between sections.
-   A radial gradient rather than a blurred circle: sections clip their overflow,
-   and a blurred box gets cut off at the edge leaving a visible hard line. */
+/* Soft colour wash behind a section.
+   The element always spans the section exactly (inset: 0) and the wash is a
+   gradient inside it, so overflow:hidden has nothing to slice — an element that
+   hangs past the section edge gets cut and leaves a visible hard line.
+   Keep --glow-y between 40% and 60% so the fade finishes before top/bottom. */
 .glow {
   position: absolute;
+  inset: 0;
   pointer-events: none;
   z-index: 0;
-  background: radial-gradient(closest-side, var(--glow, transparent), transparent 100%);
+  background: radial-gradient(
+    ellipse var(--glow-w, 52%) var(--glow-h, 55%) at var(--glow-x, 50%) var(--glow-y, 45%),
+    var(--glow, transparent) 0%,
+    transparent 72%
+  );
 }
 
 .section > .shell { position: relative; z-index: 1; }
@@ -324,12 +331,12 @@ input, textarea { font: inherit; color: inherit; }
 
 /* ── Responsive ─────────────────────────────────────────────────────────── */
 @media (max-width: 1024px) {
-  .section { padding: 5.5rem 0; }
+  .section { padding: 4rem 0; }
   .sec-head { grid-template-columns: 1fr; align-items: start; gap: 1.25rem; }
 }
 @media (max-width: 640px) {
   :root { --gutter: 1.25rem; }
   body { font-size: 16px; }
-  .section { padding: 4.25rem 0; }
+  .section { padding: 3.25rem 0; }
   .sec-head { margin-bottom: 2.5rem; }
 }

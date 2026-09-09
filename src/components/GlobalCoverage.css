@@ -1,11 +1,8 @@
 .global { overflow: hidden; }
 
 .global__glow {
-  width: 760px;
-  height: 620px;
-  left: 50%;
-  top: 28%;
-  transform: translateX(-50%);
+  --glow-x: 50%;
+  --glow-y: 48%;
   --glow: hsl(var(--cdm-teal) / 0.13);
 }
 

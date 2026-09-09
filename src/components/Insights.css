@@ -1,10 +1,8 @@
 .insights { overflow: hidden; }
 
 .insights__glow {
-  width: 760px;
-  height: 520px;
-  right: -180px;
-  top: 14%;
+  --glow-x: 90%;
+  --glow-y: 44%;
   --glow: hsl(var(--cdm-green) / 0.12);
 }
 

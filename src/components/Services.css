@@ -1,10 +1,8 @@
 .services { overflow: hidden; }
 
 .services__glow {
-  width: 780px;
-  height: 520px;
-  right: -180px;
-  top: 8%;
+  --glow-x: 90%;
+  --glow-y: 42%;
   --glow: hsl(var(--cdm-green) / 0.14);
 }
 

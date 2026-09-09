@@ -1,10 +1,8 @@
 .faqs { overflow: hidden; }
 
 .faqs__glow {
-  width: 700px;
-  height: 520px;
-  left: -180px;
-  top: 20%;
+  --glow-x: 10%;
+  --glow-y: 48%;
   --glow: hsl(var(--primary) / 0.1);
 }
 

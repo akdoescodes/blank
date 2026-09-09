@@ -1,11 +1,8 @@
 .recognitions { overflow: hidden; }
 
 .recognitions__glow {
-  width: 720px;
-  height: 400px;
-  left: 50%;
-  top: 30%;
-  transform: translateX(-50%);
+  --glow-x: 50%;
+  --glow-y: 50%;
   --glow: hsl(var(--cdm-teal) / 0.14);
 }
 

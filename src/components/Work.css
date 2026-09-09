@@ -1,10 +1,8 @@
 .work { overflow: hidden; }
 
 .work__glow {
-  width: 820px;
-  height: 560px;
-  left: -220px;
-  top: 20%;
+  --glow-x: 10%;
+  --glow-y: 45%;
   --glow: hsl(var(--cdm-teal) / 0.14);
 }
 
