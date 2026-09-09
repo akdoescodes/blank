@@ -8,9 +8,9 @@
   gap: 1.25rem;
 }
 
-.industry { padding: 1.625rem 1.5rem; }
+.industry { padding: 1.25rem 1.25rem; }
 
-.industry__icon { width: 2.75rem; height: 2.75rem; border-radius: 14px; margin-bottom: 1.5rem; }
+.industry__icon { width: 2.5rem; height: 2.5rem; border-radius: 12px; margin-bottom: 1.125rem; }
 .industry__icon svg { width: 1.1875rem; height: 1.1875rem; }
 
 .industry__title {

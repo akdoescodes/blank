@@ -12,7 +12,7 @@ import {
   type DragEndEvent,
   type DragStartEvent,
 } from '@dnd-kit/core';
-import { HERO, HERO_BOARD, HERO_LOG, HERO_PIPELINE } from '../data/site';
+import { HERO, HERO_BOARD, HERO_PIPELINE } from '../data/site';
 import { ArrowUpRight, Check } from './Icons';
 import './Hero.css';
 
@@ -144,36 +144,6 @@ function DeployRail() {
   );
 }
 
-/* ── Release log ────────────────────────────────────────────────────────── */
-function ReleaseLog() {
-  const [n, setN] = useState(HERO_LOG.length);
-
-  // Reveal one line at a time, then start the release over.
-  useEffect(() => {
-    const reduced =
-      typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (reduced) return;
-    const id = window.setInterval(() => {
-      setN((v) => (v >= HERO_LOG.length ? 1 : v + 1));
-    }, 1400);
-    return () => window.clearInterval(id);
-  }, []);
-
-  const shown = HERO_LOG.slice(Math.max(0, n - 3), n);
-
-  return (
-    <div className="term">
-      {shown.map((l) => (
-        <p key={l.text} className={`term__line term__line--${l.k}`}>
-          <span className="term__sign">{l.k === 'cmd' ? '$' : l.k === 'ok' ? '✓' : '·'}</span>
-          {l.text}
-        </p>
-      ))}
-      <span className="term__caret" aria-hidden="true" />
-    </div>
-  );
-}
-
 /* ── Hero ───────────────────────────────────────────────────────────────── */
 export default function Hero() {
   const [cols, setCols] = useState<Column[]>(() => HERO_BOARD.map((c) => ({ ...c, cards: [...c.cards] })));
@@ -255,7 +225,6 @@ export default function Hero() {
             </DndContext>
 
             <DeployRail />
-            <ReleaseLog />
           </div>
         </div>
       </div>

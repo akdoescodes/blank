@@ -5,7 +5,7 @@
   height: 560px;
   right: -180px;
   top: 10%;
-  background: hsl(var(--cdm-teal) / 0.14);
+  --glow: hsl(var(--cdm-teal) / 0.14);
 }
 
 /* Concentric rings echoing the original backdrop */
@@ -88,8 +88,8 @@
 .quote {
   display: flex;
   flex-direction: column;
-  padding: 1.875rem;
-  min-height: 340px;
+  padding: 1.5rem;
+  min-height: 268px;
 }
 
 .quote__stars { display: flex; gap: 0.1875rem; color: hsl(var(--cdm-green)); margin-bottom: 1.5rem; }
@@ -98,7 +98,7 @@
   font-size: 1.0625rem;
   line-height: 1.65;
   color: var(--ink-72);
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 }
 
 .quote__author { display: flex; align-items: center; gap: 0.875rem; margin-top: auto; }

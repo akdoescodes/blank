@@ -104,16 +104,6 @@ export const HERO_PIPELINE = {
   ],
 };
 
-/** Release log that streams under the board. `k` styles the line. */
-export const HERO_LOG: Array<{ k: 'cmd' | 'ok' | 'info'; text: string }> = [
-  { k: 'cmd', text: 'git push origin main' },
-  { k: 'info', text: 'ci: 128 tests, 0 failures' },
-  { k: 'cmd', text: 'docker push registry/api:2.14.0' },
-  { k: 'info', text: 'deploy: rolling out 3/3 pods' },
-  { k: 'ok', text: 'health check passed in 142ms' },
-  { k: 'ok', text: 'released v2.14.0 to production' },
-];
-
 export const STATS = {
   title: 'Small Team. Real Production Experience.',
   link: 'See Our Work',

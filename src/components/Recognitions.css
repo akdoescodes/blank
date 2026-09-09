@@ -6,7 +6,7 @@
   left: 50%;
   top: 30%;
   transform: translateX(-50%);
-  background: hsl(var(--cdm-teal) / 0.14);
+  --glow: hsl(var(--cdm-teal) / 0.14);
 }
 
 .recognitions__row {

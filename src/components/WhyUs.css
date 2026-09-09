@@ -5,7 +5,7 @@
   height: 620px;
   left: -220px;
   top: 12%;
-  background: hsl(var(--cdm-teal) / 0.16);
+  --glow: hsl(var(--cdm-teal) / 0.16);
 }
 
 .why__layout {

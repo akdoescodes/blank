@@ -5,7 +5,7 @@
   height: 520px;
   left: -180px;
   top: 20%;
-  background: hsl(var(--primary) / 0.1);
+  --glow: hsl(var(--primary) / 0.1);
 }
 
 .faqs__layout {

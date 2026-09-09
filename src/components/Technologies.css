@@ -6,7 +6,7 @@
   height: 480px;
   left: -160px;
   top: 6%;
-  background: hsl(var(--primary) / 0.12);
+  --glow: hsl(var(--primary) / 0.12);
 }
 
 .tech__rows { position: relative; z-index: 1; border-top: 1px solid var(--hairline); }

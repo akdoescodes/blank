@@ -6,14 +6,14 @@
   left: 50%;
   top: 18%;
   transform: translateX(-50%);
-  background: hsl(var(--cdm-teal) / 0.15);
+  --glow: hsl(var(--cdm-teal) / 0.15);
 }
 
 .form {
   max-width: 760px;
   margin: 0 auto;
-  padding: 2.5rem;
-  border-radius: 26px;
+  padding: 2rem;
+  border-radius: 20px;
 }
 
 .form__row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; }

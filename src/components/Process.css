@@ -5,7 +5,7 @@
   height: 500px;
   right: -200px;
   bottom: 4%;
-  background: hsl(var(--primary) / 0.12);
+  --glow: hsl(var(--primary) / 0.12);
 }
 
 /* ── Wave timeline ──────────────────────────────────────────────────────── */

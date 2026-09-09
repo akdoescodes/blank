@@ -6,7 +6,7 @@
   left: 50%;
   top: 28%;
   transform: translateX(-50%);
-  background: hsl(var(--cdm-teal) / 0.13);
+  --glow: hsl(var(--cdm-teal) / 0.13);
 }
 
 /* ── cobe globe ─────────────────────────────────────────────────────────── */
