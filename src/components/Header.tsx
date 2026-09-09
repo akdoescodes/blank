@@ -1,10 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { ABOUT_LINKS, BRAND, MENU_FOOTNOTE, MENU_PROMO, MENU_SERVICES, NAV } from '../data/site';
 import { ArrowUpRight, ChevronDown, Glyph } from './Icons';
+import SiteLink from './SiteLink';
 import './Header.css';
 
 export const Logo = ({ light = false }: { light?: boolean }) => (
-  <a href="#top" className={`logo${light ? ' logo--light' : ''}`} aria-label={`${BRAND} home`}>
+  <SiteLink to="#top" className={`logo${light ? ' logo--light' : ''}`} aria-label={`${BRAND} home`}>
     <svg className="logo__mark" viewBox="0 0 28 32" aria-hidden="true">
       <defs>
         <linearGradient id="lg-a" x1="0" y1="0" x2="1" y2="1">
@@ -20,7 +21,7 @@ export const Logo = ({ light = false }: { light?: boolean }) => (
       <path d="M11 0h6a4 4 0 0 1 4 4v20a4 4 0 0 1-4 4h-6V0Z" fill="url(#lg-b)" opacity=".9" />
     </svg>
     <span className="logo__word">{BRAND}</span>
-  </a>
+  </SiteLink>
 );
 
 /** Services mega menu — 3x3 link grid, footnote row, and a promo rail. */
@@ -31,21 +32,21 @@ function ServicesMenu() {
         <ul className="mega__grid">
           {MENU_SERVICES.map((s) => (
             <li key={s.title}>
-              <a href="#services" className="mega__link">
+              <SiteLink to="#services" className="mega__link">
                 <span className="mega__icon">
                   <Glyph name={s.icon} />
                 </span>
                 <span className="mega__label">{s.title}</span>
-              </a>
+              </SiteLink>
             </li>
           ))}
         </ul>
 
         <footer className="mega__foot">
           <p>{MENU_FOOTNOTE}</p>
-          <a href="#services" className="arrow-link">
+          <SiteLink to="#services" className="arrow-link">
             All services <ArrowUpRight />
-          </a>
+          </SiteLink>
         </footer>
       </div>
 
@@ -53,9 +54,9 @@ function ServicesMenu() {
         <span className="mega__promo-eyebrow">{MENU_PROMO.eyebrow}</span>
         <h3 className="mega__promo-title">{MENU_PROMO.title}</h3>
         <p className="mega__promo-body">{MENU_PROMO.body}</p>
-        <a href="#contact" className="btn btn--primary mega__promo-cta">
+        <SiteLink to="#contact" className="btn btn--primary mega__promo-cta">
           {MENU_PROMO.cta} <ArrowUpRight />
-        </a>
+        </SiteLink>
       </aside>
     </div>
   );
@@ -67,10 +68,10 @@ function AboutMenu() {
       <ul>
         {ABOUT_LINKS.map((a) => (
           <li key={a.title}>
-            <a href="#why">
+            <SiteLink to={a.to}>
               <span className="submenu__title">{a.title}</span>
               <span className="submenu__body">{a.body}</span>
-            </a>
+            </SiteLink>
           </li>
         ))}
       </ul>
@@ -145,15 +146,15 @@ export default function Header() {
                 onMouseEnter={() => menu && open(item.label)}
                 onMouseLeave={() => menu && scheduleClose()}
               >
-                <a
-                  href={item.href}
+                <SiteLink
+                  to={item.href}
                   className="nav__link"
                   aria-expanded={menu ? isOpen : undefined}
                   onFocus={() => menu && open(item.label)}
                 >
                   {item.label}
                   {menu && <ChevronDown className="nav__caret" />}
-                </a>
+                </SiteLink>
 
                 {menu && (
                   <div className={`nav__panel nav__panel--${menu}`}>
@@ -165,9 +166,9 @@ export default function Header() {
           })}
         </nav>
 
-        <a href="#contact" className="btn btn--primary site-header__cta">
+        <SiteLink to="#contact" className="btn btn--primary site-header__cta">
           Talk to an Expert <ArrowUpRight />
-        </a>
+        </SiteLink>
 
         <button
           className="burger"
@@ -187,25 +188,25 @@ export default function Header() {
         <ul className="shell">
           {NAV.map((item) => {
             const menu = 'menu' in item ? item.menu : undefined;
-            const subs =
+            const subs: Array<{ title: string; to: string }> =
               menu === 'services'
-                ? MENU_SERVICES.map((s) => s.title)
+                ? MENU_SERVICES.map((s) => ({ title: s.title, to: '#services' }))
                 : menu === 'about'
-                  ? ABOUT_LINKS.map((a) => a.title)
+                  ? ABOUT_LINKS.map((a) => ({ title: a.title, to: a.to }))
                   : [];
 
             return (
               <li key={item.label}>
-                <a href={item.href} onClick={() => setMobileOpen(false)}>
+                <SiteLink to={item.href} onClick={() => setMobileOpen(false)}>
                   {item.label}
-                </a>
+                </SiteLink>
                 {subs.length > 0 && (
                   <ul className="mobile-nav__sub">
                     {subs.map((sub) => (
-                      <li key={sub}>
-                        <a href="#services" onClick={() => setMobileOpen(false)}>
-                          {sub}
-                        </a>
+                      <li key={sub.title}>
+                        <SiteLink to={sub.to} onClick={() => setMobileOpen(false)}>
+                          {sub.title}
+                        </SiteLink>
                       </li>
                     ))}
                   </ul>
@@ -214,13 +215,13 @@ export default function Header() {
             );
           })}
           <li>
-            <a
-              href="#contact"
+            <SiteLink
+              to="#contact"
               className="btn btn--primary btn--block"
               onClick={() => setMobileOpen(false)}
             >
               Talk to an Expert <ArrowUpRight />
-            </a>
+            </SiteLink>
           </li>
         </ul>
       </div>

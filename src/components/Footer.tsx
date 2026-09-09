@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { CONTACT, FOOTER, NEWSLETTER, SERVICE_LINKS } from '../data/site';
 import { Logo } from './Header';
 import { ArrowUpRight, Mail, Social } from './Icons';
+import SiteLink from './SiteLink';
 import './Footer.css';
 
 const SOCIALS = ['linkedin', 'facebook', 'x', 'instagram', 'youtube'] as const;
@@ -67,9 +68,9 @@ export default function Footer() {
             <ul className="footer__social">
               {SOCIALS.map((s) => (
                 <li key={s}>
-                  <a href="#top" aria-label={s}>
+                  <SiteLink to="#top" aria-label={s}>
                     <Social name={s} />
-                  </a>
+                  </SiteLink>
                 </li>
               ))}
             </ul>
@@ -80,13 +81,13 @@ export default function Footer() {
             <ul>
               {SERVICE_LINKS.map((s) => (
                 <li key={s}>
-                  <a href="#services">{s}</a>
+                  <SiteLink to="#services">{s}</SiteLink>
                 </li>
               ))}
               <li>
-                <a href="#services" className="footer__all">
+                <SiteLink to="#services" className="footer__all">
                   All services <ArrowUpRight width={14} height={14} />
-                </a>
+                </SiteLink>
               </li>
             </ul>
           </nav>
@@ -95,8 +96,8 @@ export default function Footer() {
             <h3>Company</h3>
             <ul>
               {FOOTER.company.map((c) => (
-                <li key={c}>
-                  <a href="#top">{c}</a>
+                <li key={c.label}>
+                  <SiteLink to={c.to}>{c.label}</SiteLink>
                 </li>
               ))}
             </ul>
@@ -108,7 +109,7 @@ export default function Footer() {
           <ul className="footer__legal">
             {FOOTER.legal.map((l) => (
               <li key={l}>
-                <a href="#top">{l}</a>
+                <SiteLink to="#top">{l}</SiteLink>
               </li>
             ))}
           </ul>

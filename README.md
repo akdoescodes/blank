@@ -45,6 +45,14 @@ and reproduced.
 All copy lives in [src/data/site.ts](src/data/site.ts). Change the `BRAND`
 constant there to rebrand the whole site, including the footer copyright.
 
+## Routes
+
+- `/` homepage
+- `/careers` careers page (open application form, hiring process, role list)
+
+Routing uses react-router. Section links (`#services`, `#work`) route back to the
+homepage first when pressed from another page - see `src/components/SiteLink.tsx`.
+
 ## Sections
 
 Header (with services mega menu) · Hero · Stats · Services · Why Us · Process · Work · Industries ·

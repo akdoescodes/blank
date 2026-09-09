@@ -208,6 +208,65 @@ const glyphs: Record<string, JSX.Element> = {
   ),
 };
 
+/* ── Careers glyphs ────────────────────────────────────────────────────── */
+Object.assign(glyphs, {
+  trend: (
+    <>
+      <path d="M3 20V5" />
+      <path d="M3 20h17" />
+      <path d="m7 15 4-4.5 3.2 3L20 6.5" />
+      <path d="M16.4 6.5H20v3.6" />
+    </>
+  ),
+  mentor: (
+    <>
+      <path d="M3.5 5.5h11a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H8L4.5 17v-3.5h-1A1.5 1.5 0 0 1 2 12V7a1.5 1.5 0 0 1 1.5-1.5Z" />
+      <path d="M18.5 9h2A1.5 1.5 0 0 1 22 10.5v5a1.5 1.5 0 0 1-1.5 1.5h-1V20l-3-3" />
+    </>
+  ),
+  ownership: (
+    <>
+      <circle cx="8.5" cy="11" r="4" />
+      <path d="M12.5 11H21" />
+      <path d="M17.5 11v3.5M20.5 11v2.5" />
+    </>
+  ),
+  network: (
+    <>
+      <rect x="9" y="3" width="6" height="5" rx="1.5" />
+      <rect x="2.5" y="16" width="6" height="5" rx="1.5" />
+      <rect x="15.5" y="16" width="6" height="5" rx="1.5" />
+      <path d="M12 8v3.5M5.5 16v-2a1.5 1.5 0 0 1 1.5-1.5h10a1.5 1.5 0 0 1 1.5 1.5v2" />
+    </>
+  ),
+  balance: (
+    <>
+      <circle cx="12" cy="12" r="8.5" />
+      <path d="M12 3.5a8.5 8.5 0 0 1 0 17V3.5Z" fill="currentColor" stroke="none" />
+    </>
+  ),
+});
+
+export const Check = (p: P) => (
+  <svg {...base(p)} width={p.width ?? 16} height={p.height ?? 16}>
+    <path d="m5 12.5 4.5 4.5L19 7" />
+  </svg>
+);
+
+export const Close = (p: P) => (
+  <svg {...base(p)} width={p.width ?? 16} height={p.height ?? 16}>
+    <path d="M6 6l12 12M18 6 6 18" />
+  </svg>
+);
+
+export const Upload = (p: P) => (
+  <svg {...base(p)} width={p.width ?? 20} height={p.height ?? 20}>
+    <path d="M7.2 17.5a4.2 4.2 0 0 1-.5-8.37 5.5 5.5 0 0 1 10.55-1.2A3.9 3.9 0 0 1 17.6 17.5" />
+    <path d="m9.5 13.5 2.5-2.5 2.5 2.5" />
+    <path d="M12 11v9" />
+  </svg>
+);
+
 export const Glyph = ({ name, ...p }: { name: string } & P) => (
   <svg {...base(p)}>{glyphs[name] ?? glyphs.stack}</svg>
 );

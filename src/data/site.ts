@@ -42,9 +42,10 @@ export const MENU_PROMO = {
   cta: 'Book a call',
 };
 
+/** `to` starting with "/" is a route; "#" is a section on the homepage. */
 export const ABOUT_LINKS = [
-  { title: 'About us', body: 'Who we are and how we work.' },
-  { title: 'Careers', body: 'Open engineering roles.' },
+  { title: 'About us', body: 'Who we are and how we work.', to: '#why' },
+  { title: 'Careers', body: 'Open engineering roles.', to: '/careers' },
 ] as const;
 
 export const NAV = [
@@ -326,7 +327,117 @@ export const NEWSLETTER = {
 };
 
 export const FOOTER = {
-  company: ['About us', 'Work', 'Blog', 'Careers', 'Contact'],
+  company: [
+    { label: 'About us', to: '#why' },
+    { label: 'Work', to: '#work' },
+    { label: 'Blog', to: '#insights' },
+    { label: 'Careers', to: '/careers' },
+    { label: 'Contact', to: '#contact' },
+  ],
   legal: ['Privacy policy', 'Terms and conditions'],
   copyright: `© 2026 ${BRAND}. All rights reserved.`,
+};
+
+/* ── Careers page ─────────────────────────────────────────────────────────
+   Transcribed verbatim from nexasoftech.com/careers.                       */
+export const CAREERS_EMAIL = `careers@${BRAND.toLowerCase()}.com`;
+
+export const CAREERS_HERO = {
+  eyebrow: 'Careers',
+  title: 'Small Team. Large Surface Area.',
+  body: 'We are early, which means the work is broad and the decisions are yours to make. If you want to build products end to end rather than fill in tickets, this is a good place to be.',
+  primary: 'Send an Open Application',
+  secondary: 'See How Hiring Works',
+  centre: 'You here',
+  orbit: ['Ship in week one', 'Own the feature', 'Talk to clients'],
+};
+
+export const CAREERS_STATUS = {
+  title: 'No Open Roles This Month',
+  body: 'We hire when the work is there, not to fill a headcount plan. Open applications still get read.',
+  stats: [
+    { value: '5 days', label: 'to a reply, either way' },
+    { value: '6 months', label: 'we keep your application on file' },
+    { value: 'Onsite', label: 'we work together, in one office' },
+  ],
+};
+
+export const CAREERS_WORK = {
+  eyebrow: 'The Work',
+  title: 'What the Job Actually Gives You.',
+  lede: 'The things that actually shape a career, not a list of snacks.',
+  items: [
+    { icon: 'trend', title: 'Career growth', body: 'A clear path from where you are now to where you want to be, reviewed openly every six months rather than whenever someone remembers.' },
+    { icon: 'mentor', title: 'Senior mentorship', body: 'Every pull request is read by someone more experienced, with comments that explain the reasoning rather than just the fix.' },
+    { icon: 'ownership', title: 'Real ownership', body: 'You take features end to end, from schema to release, and your name stays on the work after it ships.' },
+    { icon: 'stack', title: 'Modern stack', body: 'React, Node, TypeScript, Python, AWS and Docker. We upgrade deliberately and pay down debt instead of talking about it.' },
+    { icon: 'network', title: 'Build real products', body: 'Not internal tools nobody uses. The things you build go live and are used by people who notice when they break.' },
+    { icon: 'balance', title: 'Balance that is real', body: 'Sensible hours, protected weekends, and Friday afternoons kept for learning rather than for catching up.' },
+  ],
+};
+
+export const CAREERS_FIT = {
+  eyebrow: 'Fit',
+  title: 'Honest About Who Thrives Here.',
+  lede: 'A small team amplifies both fit and mismatch. Read both columns before you write to us.',
+  good: {
+    title: 'You Will Do Well Here If',
+    items: [
+      'You would rather ask a blunt question than guess quietly',
+      'You read the error message before you paste it into a search box',
+      'You care that the thing works for the person using it',
+      'You can take a review comment without taking it personally',
+      'You are curious about the parts of the stack that are not your job',
+    ],
+  },
+  bad: {
+    title: 'This Is Probably Not for You If',
+    items: [
+      'You want a fixed ticket queue and no contact with clients',
+      'You prefer a large team where responsibility is shared thinly',
+      'You are looking for a title more than the work behind it',
+      'You want to specialise narrowly and never touch anything else',
+    ],
+  },
+};
+
+export const CAREERS_HIRING = {
+  eyebrow: 'Hiring',
+  title: 'Five Steps, No Black Box.',
+  lede: 'Two to three weeks end to end, and you always know where you stand.',
+  steps: [
+    { n: '01', title: 'Apply', body: 'Send your CV and anything you have built. A person reads it, and you hear back either way inside five working days.' },
+    { n: '02', title: 'Intro call', body: 'Thirty minutes with an engineer, not a recruiter. What you have built, what you want next, how we work.' },
+    { n: '03', title: 'Technical conversation', body: 'Ninety minutes on real problems, no whiteboard puzzles. We look at your code and talk about the decisions in it.' },
+    { n: '04', title: 'Test task', body: 'A small, scoped piece of real work, done in your own time and reviewed like any other pull request.' },
+    { n: '05', title: 'Offer', body: 'Numbers, role and start date in writing within two days of the last conversation.' },
+  ],
+  rolesTitle: 'Roles We Hire For',
+  rolesBody: 'Nothing is open today. Tell us which of these fits you and we will come back to you first when it opens.',
+  rolesPill: 'Open applications welcome',
+  roles: [
+    'Frontend Engineer', 'Backend Engineer', 'Full Stack Engineer', 'DevOps Engineer',
+    'QA Engineer', 'AI Engineer', 'UI Designer', 'Project Manager', 'Internships',
+  ],
+};
+
+export const CAREERS_APPLY = {
+  eyebrow: 'Open Application',
+  title: 'Write to Us Before a Role Exists.',
+  lede: 'Send what you have built and what you want to build next. One of the founders reads it.',
+  dropTitle: 'Drag and drop your CV here, or click to browse',
+  dropNote: 'PDF only, up to 10 MB',
+  submit: 'Send Application',
+};
+
+export const CAREERS_FAQS = {
+  eyebrow: 'Candidate Questions',
+  title: 'Things People Ask Us.',
+  items: [
+    { q: 'There are no openings. Should I still apply?', a: 'Yes, and it is the best time to. We read every open application, keep it on file for six months, and reach out first when a role opens. Several of our conversations started this way.' },
+    { q: 'Do you hire freshers and interns?', a: 'We do, in small numbers, because mentoring properly takes time. Show us something you built and can explain end to end. A finished small project beats a long list of tutorials.' },
+    { q: 'Is the role onsite or remote?', a: 'The role is onsite. We are a small team and the work moves faster when we are in the same office.' },
+    { q: 'How quickly will I hear back?', a: 'Within five working days of applying, and within two days after each conversation. If the answer is no, you get the reason.' },
+    { q: 'What should I send along with my CV?', a: 'A repository, a live product, or a short write-up of something you built and what was hard about it. We care far more about that than about formatting.' },
+  ],
 };

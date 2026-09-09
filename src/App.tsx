@@ -1,45 +1,38 @@
+import { useEffect } from 'react';
+import { BrowserRouter, Route, Routes, useLocation } from 'react-router-dom';
 import Header from './components/Header';
-import Hero from './components/Hero';
-import Stats from './components/Stats';
-import Services from './components/Services';
-import WhyUs from './components/WhyUs';
-import Process from './components/Process';
-import Work from './components/Work';
-import Industries from './components/Industries';
-import GlobalCoverage from './components/GlobalCoverage';
-import Technologies from './components/Technologies';
-import Engagement from './components/Engagement';
-import Testimonials from './components/Testimonials';
-import Faqs from './components/Faqs';
-import Insights from './components/Insights';
-import Recognitions from './components/Recognitions';
-import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ScrollTop from './components/ScrollTop';
+import Home from './pages/Home';
+import Careers from './pages/Careers';
+
+/** Land at the top of each page on navigation, unless a section was requested. */
+function ScrollToTopOnNavigate() {
+  const { pathname, state } = useLocation();
+
+  useEffect(() => {
+    if ((state as { scrollTo?: string } | null)?.scrollTo) return;
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }, [pathname, state]);
+
+  return null;
+}
 
 export default function App() {
   return (
-    <>
+    <BrowserRouter>
+      <ScrollToTopOnNavigate />
       <Header />
       <main>
-        <Hero />
-        <Stats />
-        <Services />
-        <WhyUs />
-        <Process />
-        <Work />
-        <Industries />
-        <GlobalCoverage />
-        <Technologies />
-        <Engagement />
-        <Testimonials />
-        <Faqs />
-        <Insights />
-        <Recognitions />
-        <Contact />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/careers" element={<Careers />} />
+          {/* Anything else falls back to the homepage. */}
+          <Route path="*" element={<Home />} />
+        </Routes>
       </main>
       <Footer />
       <ScrollTop />
-    </>
+    </BrowserRouter>
   );
 }
