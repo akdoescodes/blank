@@ -3,59 +3,19 @@ import { ArrowUpRight } from './Icons';
 import { useReveal } from './useReveal';
 import './Work.css';
 
-/**
- * Device-mockup placeholder: monitor + laptop + phone, matching the
- * composition used on nexasoftech.com. Tinted from the project palette.
- */
-function DeviceMock({ hue }: { hue: number }) {
-  const bars = [70, 92, 54, 80, 44];
+/** Browser frame around the product screenshot. */
+function Shot({ src, name }: { src: string; name: string }) {
   return (
-    <div className="mock" style={{ ['--mock-hue' as string]: hue }} aria-hidden="true">
-      <div className="mock__monitor">
-        <div className="mock__screen">
-          <span className="mock__chrome">
-            <i /><i /><i />
-          </span>
-          <span className="mock__hero-bar" />
-          <span className="mock__lines">
-            {bars.map((w, i) => (
-              <i key={i} style={{ width: `${w}%` }} />
-            ))}
-          </span>
-          <span className="mock__tiles">
-            <i /><i /><i />
-          </span>
-        </div>
-        <span className="mock__stand" />
-      </div>
-
-      <div className="mock__laptop">
-        <div className="mock__screen mock__screen--sm">
-          <span className="mock__hero-bar" />
-          <span className="mock__lines">
-            <i style={{ width: '82%' }} />
-            <i style={{ width: '60%' }} />
-            <i style={{ width: '74%' }} />
-          </span>
-        </div>
-        <span className="mock__base" />
-      </div>
-
-      <div className="mock__phone">
-        <div className="mock__screen mock__screen--xs">
-          <span className="mock__notch" />
-          <span className="mock__hero-bar" />
-          <span className="mock__lines">
-            <i style={{ width: '88%' }} />
-            <i style={{ width: '62%' }} />
-          </span>
-        </div>
-      </div>
-    </div>
+    <figure className="shot">
+      <span className="shot__bar" aria-hidden="true">
+        <i />
+        <i />
+        <i />
+      </span>
+      <img src={src} alt={`${name} product interface`} loading="lazy" decoding="async" />
+    </figure>
   );
 }
-
-const HUES = [200, 175, 145];
 
 export default function Work() {
   const ref = useReveal<HTMLDivElement>();
@@ -78,7 +38,7 @@ export default function Work() {
         {/* ── Lead case study: media left, detail right ─────────────────── */}
         <article className="case case--lead card">
           <div className="case__media">
-            <DeviceMock hue={HUES[0]} />
+            <Shot src={lead.shot} name={lead.name} />
           </div>
 
           <div className="case__body">
@@ -113,10 +73,10 @@ export default function Work() {
 
         {/* ── Secondary case studies ───────────────────────────────────── */}
         <div className="work__pair">
-          {rest.map((p, i) => (
+          {rest.map((p) => (
             <article key={p.name} className="case case--sm card">
               <div className="case__media">
-                <DeviceMock hue={HUES[i + 1]} />
+                <Shot src={p.shot} name={p.name} />
               </div>
 
               <div className="case__body">

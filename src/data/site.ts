@@ -83,12 +83,12 @@ export const SERVICES = {
   lede: 'One engineering team across every practice. Most clients start with one and keep us for the rest.',
   cta: 'See All Services',
   items: [
-    { icon: 'layers-window', title: 'Product Engineering', body: 'Discovery, architecture, build and release, owned end to end by one team.' },
-    { icon: 'code', title: 'Custom Web Applications', body: 'Business platforms built to your workflow, not a template.' },
-    { icon: 'stack', title: 'SaaS Product Development', body: 'Multi-tenant products with billing, roles and analytics built in.' },
-    { icon: 'sparkles', title: 'AI Development & Automation', body: 'LLM features, agents and workflow automation on your own data.' },
-    { icon: 'cloud', title: 'Cloud & DevOps', body: 'CI/CD, infrastructure as code and cost-aware cloud architecture.' },
-    { icon: 'monitor', title: 'Rescue & Modernization', body: 'Stabilize a legacy or unfinished build and cut the tech debt.' },
+    { icon: 'layers-window', title: 'Product Engineering', body: 'Discovery, architecture, build and release, owned end to end by one team.' , points: ['Discovery and scoping', 'System architecture', 'Release and handover'] },
+    { icon: 'code', title: 'Custom Web Applications', body: 'Business platforms built to your workflow, not a template.' , points: ['Workflow mapping', 'Role-based access', 'Reporting and exports'] },
+    { icon: 'stack', title: 'SaaS Product Development', body: 'Multi-tenant products with billing, roles and analytics built in.' , points: ['Multi-tenant data model', 'Billing and plans', 'Usage analytics'] },
+    { icon: 'sparkles', title: 'AI Development & Automation', body: 'LLM features, agents and workflow automation on your own data.' , points: ['Retrieval over your data', 'Agent workflows', 'Evaluation and guardrails'] },
+    { icon: 'cloud', title: 'Cloud & DevOps', body: 'CI/CD, infrastructure as code and cost-aware cloud architecture.' , points: ['CI/CD pipelines', 'Infrastructure as code', 'Cost and monitoring'] },
+    { icon: 'monitor', title: 'Rescue & Modernization', body: 'Stabilize a legacy or unfinished build and cut the tech debt.' , points: ['Codebase audit', 'Incremental refactor', 'Test coverage'] },
   ],
 };
 
@@ -130,6 +130,7 @@ export const WORK = {
   items: [
     {
       name: 'Giveable',
+      shot: '/img/work-giveable.svg',
       tags: ['Fundraising', 'SaaS platform'],
       tagline: 'AI-powered fundraising for non-profits and creators',
       body: 'A donor engagement platform that combines branded donation experiences with intelligent automation, so organisations raise more while doing less manual work.',
@@ -142,6 +143,7 @@ export const WORK = {
     },
     {
       name: 'Bookify',
+      shot: '/img/work-bookify.svg',
       tags: ['AI Document Intelligence'],
       tagline: 'Chat with any document, book, site or video',
       body: 'An AI knowledge platform that turns PDFs, books, websites and video into a conversation, so people get answers without searching through the source themselves.',
@@ -151,6 +153,7 @@ export const WORK = {
     },
     {
       name: 'Boltify',
+      shot: '/img/work-boltify.svg',
       tags: ['Lead Automation'],
       tagline: 'Lead discovery and outreach, automated end to end',
       body: 'A sales automation platform that finds prospects from Google Maps data, then runs outreach, follow-ups and scheduling from one place.',
@@ -246,12 +249,12 @@ export const TESTIMONIALS = {
   eyebrow: 'Clients',
   title: 'What the People Who Hired Us Say.',
   items: [
-    { quote: 'My react project was delivered much faster than expected with higher quality than asked for', name: 'Verified client', role: 'Founder' },
-    { quote: 'Great communicator excellent results', name: 'Tony Sampheri', role: 'Founder, Trading Platform' },
-    { quote: 'Vijay and his team did great job for our clinic website, I see his expertise and knowledge about implementing ideas with the latest technology, very excellent job done by you guys.', name: 'Pratik Kansagara', role: 'Owner, Care Homeopathy Clinic' },
-    { quote: 'Excellent developer with strong expertise in building SASS products, React/Next.js, Node.js, and Stripe integration. Delivered high-quality work on time with clear communication and professionalism. Would highly recommended', name: 'Verified client', role: 'Founder' },
-    { quote: 'Excellent work, would highly recommend', name: 'Verified client', role: 'Founder, Social Proof App' },
-    { quote: 'Great work!!!', name: 'Eugene Gelfand', role: 'Founder, Pixel Perfect Creation' },
+    { avatar: '/img/avatar-1.svg', quote: 'My react project was delivered much faster than expected with higher quality than asked for', name: 'Verified client', role: 'Founder' },
+    { avatar: '/img/avatar-2.svg', quote: 'Great communicator excellent results', name: 'Tony Sampheri', role: 'Founder, Trading Platform' },
+    { avatar: '/img/avatar-3.svg', quote: 'Vijay and his team did great job for our clinic website, I see his expertise and knowledge about implementing ideas with the latest technology, very excellent job done by you guys.', name: 'Pratik Kansagara', role: 'Owner, Care Homeopathy Clinic' },
+    { avatar: '/img/avatar-4.svg', quote: 'Excellent developer with strong expertise in building SASS products, React/Next.js, Node.js, and Stripe integration. Delivered high-quality work on time with clear communication and professionalism. Would highly recommended', name: 'Verified client', role: 'Founder' },
+    { avatar: '/img/avatar-5.svg', quote: 'Excellent work, would highly recommend', name: 'Verified client', role: 'Founder, Social Proof App' },
+    { avatar: '/img/avatar-6.svg', quote: 'Great work!!!', name: 'Eugene Gelfand', role: 'Founder, Pixel Perfect Creation' },
   ],
 };
 
@@ -282,6 +285,7 @@ export const INSIGHTS = {
       title: 'The Shopify AI SEO Guide: How to Get Your Store Cited on ChatGPT & Gemini',
       body: 'Shoppers no longer type three-word keywords into Google. They ask ChatGPT, Gemini, and Perplexity full conversational questions like "find me an eco-friendly leather wallet on Shopify under $50 with fast shipping."',
       hue: 205,
+      cover: '/img/post-1.svg',
     },
     {
       category: 'Software Development',
@@ -290,6 +294,7 @@ export const INSIGHTS = {
       title: 'How to Choose the Right Tech Stack for Your Startup in 2026',
       body: 'Choosing the right tech stack is one of the most critical decisions for any startup. In 2026, the technology landscape is evolving rapidly, with new frameworks, AI tools, and cloud solutions emerging constantly.',
       hue: 175,
+      cover: '/img/post-2.svg',
     },
     {
       category: 'AI Development',
@@ -298,6 +303,7 @@ export const INSIGHTS = {
       title: 'AI-Powered SaaS: How Modern SaaS Products Are Embedding AI for Competitive Advantage',
       body: 'The SaaS industry is undergoing a major transformation as artificial intelligence becomes a core part of modern software products. In 2026, successful SaaS platforms are no longer just feature-rich, they are intelligent, adaptive, and data-driven.',
       hue: 145,
+      cover: '/img/post-3.svg',
     },
   ],
 };

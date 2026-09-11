@@ -7,14 +7,6 @@ import './Testimonials.css';
 const PER_PAGE = 3;
 const PAGES = Math.ceil(TESTIMONIALS.items.length / PER_PAGE);
 
-const initials = (name: string) =>
-  name
-    .split(' ')
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((w) => w[0]?.toUpperCase())
-    .join('');
-
 export default function Testimonials() {
   const [page, setPage] = useState(0);
   const ref = useReveal<HTMLDivElement>();
@@ -63,7 +55,7 @@ export default function Testimonials() {
                     <p className="quote__text">{t.quote}</p>
 
                     <footer className="quote__author">
-                      <span className="quote__avatar">{initials(t.name)}</span>
+                      <img className="quote__avatar" src={t.avatar} alt="" loading="lazy" decoding="async" />
                       <span>
                         <span className="quote__name">{t.name}</span>
                         <span className="quote__role">{t.role}</span>

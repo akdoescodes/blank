@@ -3,33 +3,6 @@ import { ArrowUpRight } from './Icons';
 import { useReveal } from './useReveal';
 import './Insights.css';
 
-/** Abstract article cover — stands in for the original photography. */
-function Cover({ hue }: { hue: number }) {
-  return (
-    <div className="cover" style={{ ['--cover-hue' as string]: hue }} aria-hidden="true">
-      <span className="cover__glow" />
-      <svg className="cover__art" viewBox="0 0 320 180" preserveAspectRatio="xMidYMid slice">
-        <g className="cover__lines">
-          {Array.from({ length: 9 }, (_, i) => (
-            <path key={i} d={`M -20 ${20 + i * 20} Q 160 ${i * 20 - 10} 340 ${40 + i * 18}`} />
-          ))}
-        </g>
-        <g className="cover__nodes">
-          {[
-            [70, 58],
-            [148, 92],
-            [232, 62],
-            [196, 132],
-            [96, 124],
-          ].map(([x, y], i) => (
-            <circle key={i} cx={x} cy={y} r={i === 1 ? 7 : 4} />
-          ))}
-        </g>
-      </svg>
-    </div>
-  );
-}
-
 export default function Insights() {
   const ref = useReveal<HTMLDivElement>();
 
@@ -50,7 +23,7 @@ export default function Insights() {
           {INSIGHTS.items.map((a) => (
             <li key={a.title} className="post card card--hover">
               <div className="post__media">
-                <Cover hue={a.hue} />
+                <img className="post__img" src={a.cover} alt="" loading="lazy" decoding="async" />
                 <span className="post__category">{a.category}</span>
               </div>
 

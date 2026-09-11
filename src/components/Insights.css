@@ -59,45 +59,7 @@
 
 .post__link { margin-top: auto; font-size: 0.9375rem; }
 
-/* ── Abstract cover art ─────────────────────────────────────────────────── */
-.cover {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    140deg,
-    hsl(var(--cover-hue) 55% 22%) 0%,
-    hsl(var(--cover-hue) 62% 13%) 100%
-  );
-  overflow: hidden;
-}
-
-.cover__glow {
-  position: absolute;
-  width: 70%;
-  height: 130%;
-  left: 55%;
-  top: -30%;
-  border-radius: 50%;
-  background: hsl(var(--cover-hue) 80% 55% / 0.35);
-  filter: blur(46px);
-}
-
-.cover__art { position: absolute; inset: 0; width: 100%; height: 100%; }
-
-.cover__lines path {
-  fill: none;
-  stroke: hsl(var(--cover-hue) 85% 72%);
-  stroke-width: 0.8;
-  opacity: 0.28;
-}
-
-.cover__nodes circle {
-  fill: hsl(var(--cover-hue) 90% 78%);
-  opacity: 0.9;
-}
-
-.post:hover .cover__glow { transform: translateX(-6%); transition: transform 0.6s ease; }
+.post__img { width: 100%; height: 100%; object-fit: cover; }
 
 @media (max-width: 980px) {
   .insights__grid { grid-template-columns: 1fr; }

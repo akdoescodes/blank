@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 540" width="960" height="540" role="img" aria-label="Shopify AI SEO">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="hsl(205 58% 22%)"/>
+      <stop offset="100%" stop-color="hsl(229 64% 12%)"/>
+    </linearGradient>
+    <filter id="b3"><feGaussianBlur stdDeviation="72"/></filter>
+    <pattern id="g3" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0v40" fill="none" stroke="#fff" stroke-opacity="0.07"/>
+    </pattern>
+  </defs>
+  <rect width="960" height="540" fill="url(#bg3)"/>
+  <g filter="url(#b3)"><circle cx="510" cy="162" r="282"
+      fill="hsl(205 62% 58%)" opacity="0.5"/><circle cx="705" cy="220" r="179"
+      fill="hsl(219 56% 64%)" opacity="0.5"/><circle cx="420" cy="341" r="225"
+      fill="hsl(233 50% 70%)" opacity="0.5"/><circle cx="313" cy="293" r="312"
+      fill="hsl(247 44% 76%)" opacity="0.5"/><circle cx="636" cy="172" r="212"
+      fill="hsl(261 38% 82%)" opacity="0.5"/></g>
+  <rect width="960" height="540" fill="url(#g3)"/>
+</svg>

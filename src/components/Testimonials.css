@@ -102,15 +102,11 @@
 .quote__author { display: flex; align-items: center; gap: 0.875rem; margin-top: auto; }
 
 .quote__avatar {
-  display: grid;
-  place-items: center;
-  width: 46px;
-  height: 46px;
+  width: 42px;
+  height: 42px;
   border-radius: 50%;
+  object-fit: cover;
   background: var(--ink-06);
-  color: var(--ink);
-  font-size: 0.875rem;
-  font-weight: 600;
   flex-shrink: 0;
 }
 

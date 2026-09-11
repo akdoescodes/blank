@@ -59,6 +59,14 @@ Header (with services mega menu) · Hero · Stats · Services · Why Us · Proce
 Global Coverage · Technologies · Engagement · Testimonials · FAQs · Insights ·
 Recognitions · Contact · Footer · Scroll-to-top
 
+## Images
+
+Placeholder artwork lives in [public/img/](public/img/) as plain SVG, so it ships
+with the repo and never depends on an external service: three product
+screenshots for the case studies, three article covers, and six testimonial
+avatars. Swap the files (or the paths in `src/data/site.ts`) for real assets -
+the markup already uses `<img>`.
+
 ## Not wired up
 
 The contact form and newsletter validate input and show a success state, but

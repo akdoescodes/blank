@@ -19,6 +19,21 @@
   padding: 1.5rem 1.375rem 1.375rem;
 }
 
+/* Icon left, step number right — matches the services card on the reference. */
+.service__head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+.service__n {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ink-28);
+}
+
 .service__title {
   font-size: 1.3125rem;
   font-weight: 600;
@@ -26,11 +41,26 @@
   margin: 1.125rem 0 0.5rem;
 }
 
+.service__points {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4375rem;
+  margin-bottom: 1.25rem;
+}
+.service__points li {
+  padding: 0.3125rem 0.6875rem;
+  border-radius: 8px;
+  background: hsl(var(--background) / 0.85);
+  border: 1px solid var(--hairline);
+  font-size: 0.8125rem;
+  color: var(--ink-72);
+}
+
 .service__body {
   font-size: 0.9875rem;
   line-height: 1.65;
   color: var(--ink-72);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.125rem;
 }
 
 .service__link { margin-top: auto; font-size: 0.9375rem; }

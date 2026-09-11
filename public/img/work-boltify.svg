@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 800" width="1280" height="800" role="img" aria-label="Boltify product screenshot">
+  <rect width="1280" height="800" fill="#f7f9fc"/>
+  <rect width="210" height="800" fill="#fff"/>
+  <rect x="210" width="1" height="800" fill="#e8edf3"/>
+  <rect x="210" width="1070" height="56" fill="#fff"/>
+  <rect x="210" y="56" width="1070" height="1" fill="#e8edf3"/>
+
+  <rect x="22" y="19" width="18" height="18" rx="5" fill="hsl(145 70% 46%)"/>
+  <text x="48" y="33" font-family="Inter,sans-serif" font-size="14" font-weight="700" fill="hsl(145 45% 16%)">Boltify</text>
+  
+      <rect x="12" y="77" width="186" height="30" rx="8" fill="hsl(145 70% 46% / 0.14)"/>
+      <rect x="24" y="85" width="13" height="13" rx="3.5" fill="hsl(145 70% 46%)"/>
+      <text x="48" y="96" font-family="Inter,sans-serif" font-size="12.5"
+            fill="hsl(145 70% 46%)" font-weight="600">Pipeline</text>
+      
+      <rect x="24" y="123" width="13" height="13" rx="3.5" fill="#9aa6b8"/>
+      <text x="48" y="134" font-family="Inter,sans-serif" font-size="12.5"
+            fill="#64748b" font-weight="500">Prospects</text>
+      
+      <rect x="24" y="161" width="13" height="13" rx="3.5" fill="#9aa6b8"/>
+      <text x="48" y="172" font-family="Inter,sans-serif" font-size="12.5"
+            fill="#64748b" font-weight="500">Sequences</text>
+      
+      <rect x="24" y="199" width="13" height="13" rx="3.5" fill="#9aa6b8"/>
+      <text x="48" y="210" font-family="Inter,sans-serif" font-size="12.5"
+            fill="#64748b" font-weight="500">Calendar</text>
+      
+      <rect x="24" y="237" width="13" height="13" rx="3.5" fill="#9aa6b8"/>
+      <text x="48" y="248" font-family="Inter,sans-serif" font-size="12.5"
+            fill="#64748b" font-weight="500">Inbox</text>
+      
+      <rect x="24" y="275" width="13" height="13" rx="3.5" fill="#9aa6b8"/>
+      <text x="48" y="286" font-family="Inter,sans-serif" font-size="12.5"
+            fill="#64748b" font-weight="500">Settings</text>
+
+  <rect x="238" y="16" width="280" height="26" rx="13" fill="#f1f5f9"/>
+  <circle cx="256" cy="29" r="5" fill="none" stroke="#94a3b8" stroke-width="1.6"/>
+  <path d="M 260 33 l 4 4" stroke="#94a3b8" stroke-width="1.6" stroke-linecap="round"/>
+  <circle cx="1236" cy="29" r="13" fill="hsl(145 55% 82%)"/>
+  <rect x="1184" y="22" width="30" height="14" rx="7" fill="#eef2f7"/>
+
+  
+      <rect x="238" y="134" width="244" height="96" rx="12" fill="#fff" stroke="#e8edf3"/>
+      <text x="256" y="162" font-family="Inter,sans-serif" font-size="11.5" fill="#7c8899">Qualified meetings</text>
+      <text x="256" y="196" font-family="Inter,sans-serif" font-size="26" font-weight="700" fill="hsl(145 45% 16%)">312</text>
+      <rect x="414" y="176" width="52" height="20" rx="10" fill="hsl(145 70% 46% / 0.14)"/>
+      <text x="424" y="190" font-family="Inter,sans-serif" font-size="10.5" font-weight="600" fill="hsl(145 70% 46%)">+3x</text>
+      <rect x="506" y="134" width="244" height="96" rx="12" fill="#fff" stroke="#e8edf3"/>
+      <text x="524" y="162" font-family="Inter,sans-serif" font-size="11.5" fill="#7c8899">Reply rate</text>
+      <text x="524" y="196" font-family="Inter,sans-serif" font-size="26" font-weight="700" fill="hsl(145 45% 16%)">11.4%</text>
+      <rect x="682" y="176" width="52" height="20" rx="10" fill="hsl(145 70% 46% / 0.14)"/>
+      <text x="692" y="190" font-family="Inter,sans-serif" font-size="10.5" font-weight="600" fill="hsl(145 70% 46%)">+2.6pt</text>
+      <rect x="774" y="134" width="244" height="96" rx="12" fill="#fff" stroke="#e8edf3"/>
+      <text x="792" y="162" font-family="Inter,sans-serif" font-size="11.5" fill="#7c8899">Sequences live</text>
+      <text x="792" y="196" font-family="Inter,sans-serif" font-size="26" font-weight="700" fill="hsl(145 45% 16%)">28</text>
+      <rect x="950" y="176" width="52" height="20" rx="10" fill="hsl(145 70% 46% / 0.14)"/>
+      <text x="960" y="190" font-family="Inter,sans-serif" font-size="10.5" font-weight="600" fill="hsl(145 70% 46%)">active</text>
+
+  <rect x="238" y="256" width="512" height="220" rx="12" fill="#fff" stroke="#e8edf3"/>
+  <text x="256" y="284" font-family="Inter,sans-serif" font-size="12.5" font-weight="600" fill="hsl(145 45% 16%)">Weekly activity</text>
+  <defs><linearGradient id="ag41" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="hsl(145 70% 46%)" stop-opacity="0.28"/>
+    <stop offset="100%" stop-color="hsl(145 70% 46%)" stop-opacity="0"/>
+  </linearGradient></defs>
+  <path d="M 238 399.36720762389115 C 259.33333333333337 399.36720762389115, 259.33333333333337 295.565702798928, 280.6666666666667 295.565702798928 C 302 295.565702798928, 302 384.93768359110584, 323.3333333333333 384.93768359110584 C 344.66666666666663 384.93768359110584, 344.66666666666663 304.3080234001707, 366 304.3080234001707 C 387.3333333333333 304.3080234001707, 387.3333333333333 381.3942554926846, 408.66666666666663 381.3942554926846 C 430 381.3942554926846, 430 366.6796245530246, 451.33333333333337 366.6796245530246 C 472.6666666666667 366.6796245530246, 472.6666666666667 335.29751820086386, 494 335.29751820086386 C 515.3333333333334 335.29751820086386, 515.3333333333334 371.2829509568787, 536.6666666666667 371.2829509568787 C 558 371.2829509568787, 558 368.4960570346825, 579.3333333333333 368.4960570346825 C 600.6666666666666 368.4960570346825, 600.6666666666666 343.30680714502313, 622 343.30680714502313 C 643.3333333333334 343.30680714502313, 643.3333333333334 306.1770079333973, 664.6666666666667 306.1770079333973 C 686 306.1770079333973, 686 306.63858325099505, 707.3333333333333 306.63858325099505 C 728.6666666666666 306.63858325099505, 728.6666666666666 373.28623037675686, 750 373.28623037675686 L 750 456 L 238 456 Z" fill="url(#ag41)"/>
+  <path d="M 238 399.36720762389115 C 259.33333333333337 399.36720762389115, 259.33333333333337 295.565702798928, 280.6666666666667 295.565702798928 C 302 295.565702798928, 302 384.93768359110584, 323.3333333333333 384.93768359110584 C 344.66666666666663 384.93768359110584, 344.66666666666663 304.3080234001707, 366 304.3080234001707 C 387.3333333333333 304.3080234001707, 387.3333333333333 381.3942554926846, 408.66666666666663 381.3942554926846 C 430 381.3942554926846, 430 366.6796245530246, 451.33333333333337 366.6796245530246 C 472.6666666666667 366.6796245530246, 472.6666666666667 335.29751820086386, 494 335.29751820086386 C 515.3333333333334 335.29751820086386, 515.3333333333334 371.2829509568787, 536.6666666666667 371.2829509568787 C 558 371.2829509568787, 558 368.4960570346825, 579.3333333333333 368.4960570346825 C 600.6666666666666 368.4960570346825, 600.6666666666666 343.30680714502313, 622 343.30680714502313 C 643.3333333333334 343.30680714502313, 643.3333333333334 306.1770079333973, 664.6666666666667 306.1770079333973 C 686 306.1770079333973, 686 306.63858325099505, 707.3333333333333 306.63858325099505 C 728.6666666666666 306.63858325099505, 728.6666666666666 373.28623037675686, 750 373.28623037675686" fill="none" stroke="hsl(145 70% 46%)" stroke-width="2.4" stroke-linecap="round"/>
+
+  <rect x="790" y="256" width="380" height="220" rx="12" fill="#fff" stroke="#e8edf3"/>
+  <text x="808" y="284" font-family="Inter,sans-serif" font-size="12.5" font-weight="600" fill="hsl(145 45% 16%)">Breakdown</text>
+  <path d="M 894 300 A 66 66 0 0 1 910.4135325528804 429.92648863448966" fill="none" stroke="hsl(145 62% 44%)" stroke-width="22"/><path d="M 910.4135325528804 429.92648863448966 A 66 66 0 0 1 828.1302359237341 370.14417428893466" fill="none" stroke="hsl(145 50% 57%)" stroke-width="22"/><path d="M 828.1302359237341 370.14417428893466 A 66 66 0 0 1 855.2061733486968 312.60487837125345" fill="none" stroke="hsl(145 38% 70%)" stroke-width="22"/><path d="M 855.2061733486968 312.60487837125345 A 66 66 0 0 1 894 300" fill="none" stroke="hsl(145 26% 83%)" stroke-width="22"/>
+
+  <rect x="238" y="496" width="1014" height="286" rx="12" fill="#fff" stroke="#e8edf3"/>
+  <text x="256" y="522" font-family="Inter,sans-serif" font-size="12.5" font-weight="600" fill="hsl(145 45% 16%)">Recent</text>
+  
+    <rect x="238" y="526" width="1014" height="1" fill="#eef2f7"/>
+    <circle cx="260" cy="550" r="11" fill="hsl(145 40% 78%)"/>
+    <rect x="280" y="543" width="137.4504518590171" height="9" rx="4.5" fill="#cbd5e1"/>
+    <rect x="630" y="543" width="86" height="9" rx="4.5" fill="#dde4ed"/>
+    <rect x="830" y="540" width="72" height="16" rx="8" fill="hsl(145 70% 46% / 0.14)"/>
+    <rect x="1150" y="543" width="58" height="9" rx="4.5" fill="#dde4ed"/>
+    <rect x="238" y="570" width="1014" height="1" fill="#eef2f7"/>
+    <circle cx="260" cy="594" r="11" fill="hsl(145 48% 74%)"/>
+    <rect x="280" y="587" width="209.5973280489432" height="9" rx="4.5" fill="#cbd5e1"/>
+    <rect x="630" y="587" width="86" height="9" rx="4.5" fill="#dde4ed"/>
+    <rect x="830" y="584" width="72" height="16" rx="8" fill="hsl(145 70% 46% / 0.14)"/>
+    <rect x="1150" y="587" width="58" height="9" rx="4.5" fill="#dde4ed"/>
+    <rect x="238" y="614" width="1014" height="1" fill="#eef2f7"/>
+    <circle cx="260" cy="638" r="11" fill="hsl(145 56% 70%)"/>
+    <rect x="280" y="631" width="187.23461154253903" height="9" rx="4.5" fill="#cbd5e1"/>
+    <rect x="630" y="631" width="86" height="9" rx="4.5" fill="#dde4ed"/>
+    <rect x="830" y="628" width="72" height="16" rx="8" fill="hsl(145 70% 46% / 0.14)"/>
+    <rect x="1150" y="631" width="58" height="9" rx="4.5" fill="#dde4ed"/>
+    <rect x="238" y="658" width="1014" height="1" fill="#eef2f7"/>
+    <circle cx="260" cy="682" r="11" fill="hsl(145 64% 66%)"/>
+    <rect x="280" y="675" width="124.29582596025236" height="9" rx="4.5" fill="#cbd5e1"/>
+    <rect x="630" y="675" width="86" height="9" rx="4.5" fill="#dde4ed"/>
+    <rect x="830" y="672" width="72" height="16" rx="8" fill="hsl(145 70% 46% / 0.14)"/>
+    <rect x="1150" y="675" width="58" height="9" rx="4.5" fill="#dde4ed"/>
+    <rect x="238" y="702" width="1014" height="1" fill="#eef2f7"/>
+    <circle cx="260" cy="726" r="11" fill="hsl(145 72% 62%)"/>
+    <rect x="280" y="719" width="124.79828149303714" height="9" rx="4.5" fill="#cbd5e1"/>
+    <rect x="630" y="719" width="86" height="9" rx="4.5" fill="#dde4ed"/>
+    <rect x="830" y="716" width="72" height="16" rx="8" fill="hsl(145 70% 46% / 0.14)"/>
+    <rect x="1150" y="719" width="58" height="9" rx="4.5" fill="#dde4ed"/>
+</svg>
