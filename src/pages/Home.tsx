@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import Hero from '../components/Hero';
-import Stats from '../components/Stats';
+import Culture from '../components/Culture';
 import Services from '../components/Services';
 import WhyUs from '../components/WhyUs';
 import Process from '../components/Process';
@@ -31,7 +31,7 @@ export default function Home() {
   return (
     <>
       <Hero />
-      <Stats />
+      <Culture />
       <Services />
       <WhyUs />
       <Process />

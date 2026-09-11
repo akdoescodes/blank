@@ -65,15 +65,16 @@ export const HERO = {
   note: '30-minute technical call with an engineer. No pressure. No sales pitch.',
 };
 
-export const STATS = {
-  title: 'Small Team. Real Production Experience.',
-  link: 'See Our Work',
+/** Portrait culture cards that sit between the hero and the services grid. */
+export const CULTURE = {
+  eyebrow: `Inside ${BRAND}`,
+  title: 'A Small Team That Ships Like One.',
+  lede: 'How the work actually runs day to day, and the habits behind the software we hand over.',
   items: [
-    { value: 30, label: 'Projects completed' },
-    { value: 15, label: 'Clients served' },
-    { value: 8, label: 'Countries served' },
-    { value: 9, label: 'Services offered' },
-    { value: 2, label: 'Years building' },
+    { img: '/img/culture-agile.svg', tag: 'Agile', title: 'Two-week sprints, in the open', body: 'A demo at the end of every sprint and a backlog you can see. You always know what shipped and what is next.' },
+    { img: '/img/culture-office.svg', tag: 'The studio', title: 'One room, no handoffs', body: 'Engineers, designers and the founders sit together, so a decision takes minutes rather than a thread.' },
+    { img: '/img/culture-craft.svg', tag: 'Craft', title: 'Reviewed before it ships', body: 'Every pull request is read by a senior engineer, tests run before merge, and refactors get booked like features.' },
+    { img: '/img/culture-brand.svg', tag: 'Design', title: 'Brand and build in one team', body: 'Design systems, not screenshots. What gets designed is what gets built, down to the spacing.' },
   ],
 };
 

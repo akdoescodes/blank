@@ -55,7 +55,7 @@ homepage first when pressed from another page - see `src/components/SiteLink.tsx
 
 ## Sections
 
-Header (with services mega menu) · Hero · Stats · Services · Why Us · Process · Work · Industries ·
+Header (with services mega menu) · Hero · Culture · Services · Why Us · Process · Work · Industries ·
 Global Coverage · Technologies · Engagement · Testimonials · FAQs · Insights ·
 Recognitions · Contact · Footer · Scroll-to-top
 
@@ -63,8 +63,8 @@ Recognitions · Contact · Footer · Scroll-to-top
 
 Placeholder artwork lives in [public/img/](public/img/) as plain SVG, so it ships
 with the repo and never depends on an external service: three product
-screenshots for the case studies, three article covers, and six testimonial
-avatars. Swap the files (or the paths in `src/data/site.ts`) for real assets -
+screenshots for the case studies, four portrait culture illustrations, three
+article covers, and six testimonial avatars. Swap the files (or the paths in `src/data/site.ts`) for real assets -
 the markup already uses `<img>`.
 
 ## Not wired up

@@ -1,0 +1,99 @@
+.culture { overflow: hidden; }
+
+.culture__glow {
+  --glow-x: 50%;
+  --glow-y: 44%;
+  --glow: hsl(var(--cdm-teal) / 0.14);
+}
+
+.culture__grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+/* Portrait card: the illustration fills it, the copy sits over a scrim. */
+.cult {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--r-lg);
+  overflow: hidden;
+  border: 1px solid var(--hairline);
+  box-shadow: var(--shadow-card);
+  transition: transform 0.24s ease, box-shadow 0.24s ease;
+}
+.cult:hover { transform: translateY(-4px); box-shadow: var(--shadow-card-hover); }
+
+.cult__img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.cult:hover .cult__img { transform: scale(1.04); }
+
+.cult__scrim {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    hsl(var(--foreground) / 0) 46%,
+    hsl(var(--foreground) / 0.34) 64%,
+    hsl(var(--foreground) / 0.88) 100%
+  );
+}
+
+.cult__body {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.25rem;
+  color: #fff;
+}
+
+.cult__tag {
+  display: inline-block;
+  padding: 0.25rem 0.625rem;
+  margin-bottom: 0.625rem;
+  border-radius: var(--r-pill);
+  background: hsl(0 0% 100% / 0.18);
+  border: 1px solid hsl(0 0% 100% / 0.26);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.cult__title {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.012em;
+  color: #fff;
+  margin-bottom: 0.4375rem;
+}
+
+.cult__text {
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: hsl(0 0% 100% / 0.78);
+}
+
+@media (max-width: 1024px) {
+  .culture__grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 560px) {
+  /* Stays portrait on phones, just a little less tall so four cards are not
+     an endless scroll. */
+  .culture__grid { grid-template-columns: 1fr; gap: 0.875rem; }
+  .cult { aspect-ratio: 4 / 5; }
+  .cult__img { object-position: 50% 28%; }
+  .cult__title { font-size: 1rem; }
+  .cult__text { font-size: 0.8125rem; }
+  .cult__body { padding: 1.125rem; }
+}
