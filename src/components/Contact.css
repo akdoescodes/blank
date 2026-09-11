@@ -70,3 +70,5 @@
   .form__row { grid-template-columns: 1fr; gap: 1.25rem; }
   .form__row .field { margin-bottom: 0; }
 }
+
+.form__note.is-error { color: hsl(0 65% 48%); font-weight: 500; }

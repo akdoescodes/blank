@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ABOUT_LINKS, BRAND, MENU_FOOTNOTE, MENU_PROMO, MENU_SERVICES, NAV } from '../data/site';
 import { ArrowUpRight, ChevronDown, Glyph } from './Icons';
 import SiteLink from './SiteLink';
+import { useAuth } from '../lib/auth';
 import './Header.css';
 
 export const Logo = ({ light = false }: { light?: boolean }) => (
@@ -80,6 +81,7 @@ function AboutMenu() {
 }
 
 export default function Header() {
+  const { session, signOut } = useAuth();
   const [scrolled, setScrolled] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -166,9 +168,27 @@ export default function Header() {
           })}
         </nav>
 
-        <SiteLink to="#contact" className="btn btn--primary site-header__cta">
-          Talk to an Expert <ArrowUpRight />
-        </SiteLink>
+        <div className="site-header__auth">
+          {session ? (
+            <>
+              <button className="site-header__account" onClick={() => void signOut()}>
+                Log out
+              </button>
+              <SiteLink to="/dashboard" className="site-header__account is-strong">
+                Dashboard
+              </SiteLink>
+            </>
+          ) : (
+            <>
+              <SiteLink to="/login" className="site-header__account">
+                Log in
+              </SiteLink>
+              <SiteLink to="/signup" className="site-header__account is-strong">
+                Sign up
+              </SiteLink>
+            </>
+          )}
+        </div>
 
         <button
           className="burger"
@@ -214,15 +234,39 @@ export default function Header() {
               </li>
             );
           })}
-          <li>
-            <SiteLink
-              to="#contact"
-              className="btn btn--primary btn--block"
-              onClick={() => setMobileOpen(false)}
-            >
-              Talk to an Expert <ArrowUpRight />
-            </SiteLink>
-          </li>
+          {session ? (
+            <>
+              <li>
+                <button
+                  className="mobile-nav__signout"
+                  onClick={() => {
+                    setMobileOpen(false);
+                    void signOut();
+                  }}
+                >
+                  Log out
+                </button>
+              </li>
+              <li>
+                <SiteLink to="/dashboard" onClick={() => setMobileOpen(false)}>
+                  Dashboard
+                </SiteLink>
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <SiteLink to="/login" onClick={() => setMobileOpen(false)}>
+                  Log in
+                </SiteLink>
+              </li>
+              <li>
+                <SiteLink to="/signup" onClick={() => setMobileOpen(false)}>
+                  Sign up
+                </SiteLink>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </header>

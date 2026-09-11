@@ -9,6 +9,7 @@ import {
   CAREERS_STATUS,
   CAREERS_WORK,
 } from '../data/site';
+import { submitInternApplication } from '../lib/api';
 import { ArrowUpRight, Check, Close, Glyph, Plus, Upload } from '../components/Icons';
 import { useReveal } from '../components/useReveal';
 // This page reuses the accordion and form styling from the homepage sections.
@@ -235,6 +236,8 @@ function Apply() {
   const [errors, setErrors] = useState<Partial<Record<keyof Fields | 'file', string>>>({});
   const [dragOver, setDragOver] = useState(false);
   const [sent, setSent] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [failure, setFailure] = useState('');
   const inputRef = useRef<HTMLInputElement | null>(null);
   const ref = useReveal<HTMLDivElement>();
 
@@ -258,8 +261,9 @@ function Apply() {
     setErrors((x) => ({ ...x, file: undefined }));
   };
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setFailure('');
     const next: Partial<Record<keyof Fields | 'file', string>> = {};
     if (!values.name.trim()) next.name = 'Please enter your name.';
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) next.email = 'Please enter a valid email.';
@@ -270,10 +274,20 @@ function Apply() {
     setErrors(next);
     if (Object.keys(next).length) return;
 
-    // No backend wired up yet — swap this for your applications endpoint.
-    setSent(true);
-    setValues(EMPTY);
-    setFile(null);
+    // The CV goes to the private "applications" bucket, the rest to the
+    // intern_applications table; /dashboard reads both back.
+    setBusy(true);
+    try {
+      await submitInternApplication({ ...values, cv: file });
+      setSent(true);
+      setValues(EMPTY);
+      setFile(null);
+      if (inputRef.current) inputRef.current.value = '';
+    } catch (err) {
+      setFailure(err instanceof Error ? err.message : 'Could not send that. Please try again.');
+    } finally {
+      setBusy(false);
+    }
   };
 
   return (
@@ -397,10 +411,15 @@ function Apply() {
             {errors.message && <span className="field__error">{errors.message}</span>}
           </label>
 
-          <button type="submit" className="btn btn--primary btn--block form__submit">
-            {CAREERS_APPLY.submit} <ArrowUpRight width={18} height={18} />
+          <button type="submit" className="btn btn--primary btn--block form__submit" disabled={busy}>
+            {busy ? 'Sending…' : CAREERS_APPLY.submit} <ArrowUpRight width={18} height={18} />
           </button>
 
+          {failure && (
+            <p className="form__note is-error" role="alert">
+              {failure}
+            </p>
+          )}
           {sent && (
             <p className="form__note is-sent" role="status">
               Thanks — your application is in. We reply within five working days, either way.

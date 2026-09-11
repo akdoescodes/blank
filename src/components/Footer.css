@@ -151,3 +151,15 @@
   .footer__base { flex-direction: column; align-items: flex-start; }
   .footer__legal { gap: 1.25rem; }
 }
+
+/* Newsletter form + its status line share one grid cell. */
+.news__side { display: grid; gap: 0.625rem; }
+
+.news__note {
+  margin: 0;
+  padding-left: 1.125rem;
+  font-size: 0.875rem;
+  color: hsl(0 80% 76%);
+}
+
+.news__note.is-done { color: hsl(145 60% 70%); }

@@ -16,9 +16,14 @@
 /* An open panel needs an opaque bar so page content does not show through. */
 .site-header.is-menu-open { background: #fff; }
 
+/* Three columns with equal-weight outer tracks, so the nav is centred on the
+   bar itself rather than on whatever space the logo and auth links leave over.
+   The burger shares column 3 with the auth links — the two are never both
+   visible, so they can never collide. */
 .site-header__bar {
   height: 78px;
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 1rem;
 }
@@ -30,6 +35,8 @@
   gap: 0.625rem;
   flex-shrink: 0;
 }
+/* Scoped to the bar: the footer reuses .logo and must not inherit the placement. */
+.site-header__bar > .logo { grid-column: 1; justify-self: start; }
 .logo__mark { width: 22px; height: 25px; }
 .logo__word {
   font-family: var(--font-display);
@@ -42,10 +49,11 @@
 
 /* ── Desktop nav ────────────────────────────────────────────────────────── */
 .nav {
+  grid-column: 2;
+  justify-self: center;
   display: flex;
   align-items: center;
   gap: 0.25rem;
-  margin-left: 2.5rem;
 }
 /* The About panel anchors to its own nav item; the full-width services mega
    menu anchors to the header instead. */
@@ -218,10 +226,17 @@
 .submenu__title { font-size: 0.9375rem; font-weight: 600; color: var(--ink); }
 .submenu__body { font-size: 0.875rem; color: var(--ink-72); }
 
-.site-header__cta { margin-left: auto; }
+/* Auth pair — two plain text links, no button chrome. */
+.site-header__auth {
+  grid-column: 3;
+  justify-self: end;
+  display: flex;
+  align-items: center;
+  gap: 1.125rem;
+}
 
 /* ── Burger ─────────────────────────────────────────────────────────────── */
-.burger { display: none; margin-left: auto; padding: 0.5rem; }
+.burger { display: none; grid-column: 3; justify-self: end; padding: 0.5rem; }
 .burger__box {
   display: grid;
   gap: 5px;
@@ -269,11 +284,48 @@
   padding: 1rem 1.5rem;
 }
 
+/* "Log out" is a <button>, so it needs the link styling spelled out. */
+.mobile-nav__signout {
+  display: block;
+  width: 100%;
+  padding: 0.75rem 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-align: left;
+  cursor: pointer;
+}
+
 @media (max-width: 1080px) {
-  .nav, .site-header__cta { display: none; }
+  .nav, .site-header__auth { display: none; }
   .burger { display: block; }
   .mobile-nav { display: block; }
 }
 @media (max-width: 640px) {
   .site-header__bar { height: 66px; }
 }
+
+/* ── Log in / Log out ───────────────────────────────────────────────────── */
+/* Renders as an <a> when signed out and a <button> when signed in, so the
+   button chrome has to be reset here for the two to look identical. */
+.site-header__account {
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink-72);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+/* The second of the pair — same size, just a touch more present. */
+.site-header__account.is-strong { color: var(--ink); font-weight: 600; }
+
+.site-header__account:hover { color: hsl(var(--primary)); }

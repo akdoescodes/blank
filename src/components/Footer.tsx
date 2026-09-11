@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { CONTACT, FOOTER, NEWSLETTER, SERVICE_LINKS } from '../data/site';
+import { subscribeNewsletter } from '../lib/api';
 import { Logo } from './Header';
 import { ArrowUpRight, Mail, Social } from './Icons';
 import SiteLink from './SiteLink';
@@ -10,13 +11,27 @@ const SOCIALS = ['linkedin', 'facebook', 'x', 'instagram', 'youtube'] as const;
 export default function Footer() {
   const [email, setEmail] = useState('');
   const [done, setDone] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [note, setNote] = useState('');
 
-  const subscribe = (e: FormEvent) => {
+  const subscribe = async (e: FormEvent) => {
     e.preventDefault();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
-    // No backend wired up yet — point this at your list provider.
-    setDone(true);
-    setEmail('');
+
+    // Lands in the newsletter_subscribers table. A repeat signup counts as a
+    // success — the API only rejects a genuine failure.
+    setBusy(true);
+    setNote('');
+    try {
+      await subscribeNewsletter(email);
+      setDone(true);
+      setNote('You are on the list.');
+      setEmail('');
+    } catch (err) {
+      setNote(err instanceof Error ? err.message : 'Could not sign you up. Try again.');
+    } finally {
+      setBusy(false);
+    }
   };
 
   return (
@@ -30,22 +45,30 @@ export default function Footer() {
             <p className="news__body">{NEWSLETTER.body}</p>
           </div>
 
-          <form className="news__form" onSubmit={subscribe}>
-            <span className="news__icon">
-              <Mail />
-            </span>
-            <input
-              type="email"
-              placeholder="you@company.com"
-              aria-label="Email address"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <button type="submit" className="btn news__btn">
-              {done ? 'Subscribed' : NEWSLETTER.cta} <ArrowUpRight />
-            </button>
-          </form>
+          <div className="news__side">
+            <form className="news__form" onSubmit={subscribe}>
+              <span className="news__icon">
+                <Mail />
+              </span>
+              <input
+                type="email"
+                placeholder="you@company.com"
+                aria-label="Email address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+              <button type="submit" className="btn news__btn" disabled={busy}>
+                {busy ? 'Signing up…' : done ? 'Subscribed' : NEWSLETTER.cta} <ArrowUpRight />
+              </button>
+            </form>
+
+            {note && (
+              <p className={`news__note${done ? ' is-done' : ''}`} role="status">
+                {note}
+              </p>
+            )}
+          </div>
         </div>
 
         <hr className="footer__rule" />

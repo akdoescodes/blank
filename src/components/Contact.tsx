@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from 'react';
 import { CONTACT_SECTION } from '../data/site';
+import { submitWorkEnquiry } from '../lib/api';
 import { ArrowUpRight } from './Icons';
 import { useReveal } from './useReveal';
 import './Contact.css';
@@ -12,6 +13,8 @@ export default function Contact() {
   const [values, setValues] = useState<Fields>(EMPTY);
   const [errors, setErrors] = useState<Partial<Record<keyof Fields, string>>>({});
   const [sent, setSent] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [failure, setFailure] = useState('');
   const ref = useReveal<HTMLDivElement>();
 
   const set = (k: keyof Fields) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -19,8 +22,9 @@ export default function Contact() {
     setErrors((x) => ({ ...x, [k]: undefined }));
   };
 
-  const onSubmit = (e: FormEvent) => {
+  const onSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    setFailure('');
     const next: Partial<Record<keyof Fields, string>> = {};
     if (!values.name.trim()) next.name = 'Please enter your name.';
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) next.email = 'Please enter a valid work email.';
@@ -30,9 +34,17 @@ export default function Contact() {
     setErrors(next);
     if (Object.keys(next).length) return;
 
-    // No backend wired up yet — swap this for your form endpoint.
-    setSent(true);
-    setValues(EMPTY);
+    // Lands in the work_enquiries table; /dashboard reads it back.
+    setBusy(true);
+    try {
+      await submitWorkEnquiry(values);
+      setSent(true);
+      setValues(EMPTY);
+    } catch (err) {
+      setFailure(err instanceof Error ? err.message : 'Could not send that. Please try again.');
+    } finally {
+      setBusy(false);
+    }
   };
 
   return (
@@ -118,12 +130,19 @@ export default function Contact() {
             />
           </label>
 
-          <button type="submit" className="btn btn--primary btn--block form__submit">
-            {CONTACT_SECTION.submit} <ArrowUpRight width={18} height={18} />
+          <button type="submit" className="btn btn--primary btn--block form__submit" disabled={busy}>
+            {busy ? 'Sending…' : CONTACT_SECTION.submit} <ArrowUpRight width={18} height={18} />
           </button>
 
-          <p className={`form__note${sent ? ' is-sent' : ''}`} role="status">
-            {sent ? 'Thanks — we have your message and will reply within one business day.' : CONTACT_SECTION.note}
+          <p
+            className={`form__note${sent ? ' is-sent' : ''}${failure ? ' is-error' : ''}`}
+            role="status"
+          >
+            {failure
+              ? failure
+              : sent
+                ? 'Thanks — we have your message and will reply within one business day.'
+                : CONTACT_SECTION.note}
           </p>
         </form>
       </div>

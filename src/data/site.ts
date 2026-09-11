@@ -312,9 +312,11 @@ export const INSIGHTS = {
 export const RECOGNITION = {
   title: 'Recognised Where It Counts',
   lede: 'Independent checks and platform partnerships, earned through delivered work.',
+  /* `logo` is optional: point it at a file in public/img/ and that artwork is
+     used instead of the drawn badge — e.g. logo: '/img/businessfirms.svg'. */
   items: [
-    { title: 'Certified by BusinessFirms', kind: 'businessfirms' as const },
-    { title: 'Shopify Partner', kind: 'shopify' as const },
+    { title: 'Certified by BusinessFirms', kind: 'businessfirms' as const, logo: '' },
+    { title: 'Shopify Partner', kind: 'shopify' as const, logo: '' },
   ],
 };
 

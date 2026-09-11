@@ -52,9 +52,17 @@
 .badge__bf strong { font-size: 0.6875rem; letter-spacing: -0.01em; }
 .badge__stars { display: flex; gap: 1px; color: hsl(var(--cdm-green)); }
 
+/* Supplied artwork — contained so any aspect ratio sits inside the circle. */
+.badge__img {
+  width: 104px;
+  height: 104px;
+  object-fit: contain;
+}
+
 /* ── Shopify ────────────────────────────────────────────────────────────── */
 .badge__inner--shopify { gap: 0.5rem; grid-auto-flow: row; }
-.badge__bag { width: 34px; color: hsl(var(--cdm-green)); }
+/* react-icons renders a 1em square, so size it with font-size. */
+.badge__bag { font-size: 38px; color: #95BF47; }
 .badge__word {
   display: grid;
   justify-items: center;
