@@ -1,10 +1,11 @@
+import { Link } from 'react-router-dom';
 import { WORK } from '../data/site';
 import { ArrowUpRight } from './Icons';
 import { useReveal } from './useReveal';
 import './Work.css';
 
 /** Browser frame around the product screenshot. */
-function Shot({ src, name }: { src: string; name: string }) {
+export function Shot({ src, name }: { src: string; name: string }) {
   return (
     <figure className="shot">
       <span className="shot__bar" aria-hidden="true">
@@ -36,7 +37,7 @@ export default function Work() {
         </header>
 
         {/* ── Lead case study: media left, detail right ─────────────────── */}
-        <article className="case case--lead card">
+        <article className="case case--lead case--link card card--hover">
           <div className="case__media">
             <Shot src={lead.shot} name={lead.name} />
           </div>
@@ -50,7 +51,13 @@ export default function Work() {
               ))}
             </ul>
 
-            <h3 className="case__title">{lead.tagline}</h3>
+            {/* The title link is stretched over the whole card (see
+                .case--link in Work.css), so anywhere on the card opens it. */}
+            <h3 className="case__title">
+              <Link to={`/work/${lead.slug}`} className="case__cover">
+                {lead.tagline}
+              </Link>
+            </h3>
             <p className="case__text">{lead.body}</p>
 
             <ul className="case__metrics">
@@ -64,9 +71,9 @@ export default function Work() {
 
             <footer className="case__foot">
               <span className="case__stack">{lead.stack}</span>
-              <a href="#contact" className="arrow-link case__link">
+              <span className="arrow-link case__link" aria-hidden="true">
                 {lead.link} <ArrowUpRight />
-              </a>
+              </span>
             </footer>
           </div>
         </article>
@@ -74,7 +81,7 @@ export default function Work() {
         {/* ── Secondary case studies ───────────────────────────────────── */}
         <div className="work__pair">
           {rest.map((p) => (
-            <article key={p.name} className="case case--sm card">
+            <article key={p.slug} className="case case--sm case--link card card--hover">
               <div className="case__media">
                 <Shot src={p.shot} name={p.name} />
               </div>
@@ -88,7 +95,11 @@ export default function Work() {
                   ))}
                 </ul>
 
-                <h3 className="case__title case__title--sm">{p.tagline}</h3>
+                <h3 className="case__title case__title--sm">
+                  <Link to={`/work/${p.slug}`} className="case__cover">
+                    {p.tagline}
+                  </Link>
+                </h3>
                 <p className="case__text">{p.body}</p>
 
                 <ul className="case__metrics case__metrics--inline">
@@ -102,9 +113,9 @@ export default function Work() {
 
                 <footer className="case__foot">
                   <span className="case__stack">{p.stack}</span>
-                  <a href="#contact" className="arrow-link case__link">
+                  <span className="arrow-link case__link" aria-hidden="true">
                     {p.link} <ArrowUpRight />
-                  </a>
+                  </span>
                 </footer>
               </div>
             </article>

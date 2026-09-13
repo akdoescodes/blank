@@ -227,8 +227,12 @@ function Hiring() {
 }
 
 /* ── Open application form ──────────────────────────────────────────────── */
-type Fields = { name: string; email: string; phone: string; message: string };
-const EMPTY: Fields = { name: '', email: '', phone: '', message: '' };
+type Fields = { name: string; email: string; phone: string; role: string; message: string };
+const EMPTY: Fields = { name: '', email: '', phone: '', role: '', message: '' };
+
+/* The same list as the "Roles We Hire For" box, plus a way out for people who
+   fit more than one. Saved to intern_applications.role_applied. */
+const ROLE_OPTIONS = [...CAREERS_HIRING.roles, 'Not sure yet'];
 
 function Apply() {
   const [values, setValues] = useState<Fields>(EMPTY);
@@ -242,7 +246,8 @@ function Apply() {
   const ref = useReveal<HTMLDivElement>();
 
   const set =
-    (k: keyof Fields) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    (k: keyof Fields) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
       setValues((v) => ({ ...v, [k]: e.target.value }));
       setErrors((x) => ({ ...x, [k]: undefined }));
     };
@@ -268,6 +273,7 @@ function Apply() {
     if (!values.name.trim()) next.name = 'Please enter your name.';
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(values.email)) next.email = 'Please enter a valid email.';
     if (values.phone.replace(/\D/g, '').length < 7) next.phone = 'Please enter a phone number.';
+    if (!values.role) next.role = 'Please choose the role you are applying for.';
     if (!file) next.file = 'Please attach your CV as a PDF.';
     if (!values.message.trim()) next.message = 'Tell us a little about what you have built.';
 
@@ -278,7 +284,14 @@ function Apply() {
     // intern_applications table; /dashboard reads both back.
     setBusy(true);
     try {
-      await submitInternApplication({ ...values, cv: file });
+      await submitInternApplication({
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+        message: values.message,
+        roleApplied: values.role,
+        cv: file,
+      });
       setSent(true);
       setValues(EMPTY);
       setFile(null);
@@ -335,19 +348,43 @@ function Apply() {
             </label>
           </div>
 
-          <label className="field">
-            <span className="field__label">
-              Your phone <em>*</em>
-            </span>
-            <input
-              type="tel"
-              placeholder="+91 99258 76005"
-              value={values.phone}
-              onChange={set('phone')}
-              aria-invalid={!!errors.phone}
-            />
-            {errors.phone && <span className="field__error">{errors.phone}</span>}
-          </label>
+          <div className="form__row">
+            <label className="field">
+              <span className="field__label">
+                Your phone <em>*</em>
+              </span>
+              <input
+                type="tel"
+                placeholder="+91 98765 43210"
+                value={values.phone}
+                onChange={set('phone')}
+                aria-invalid={!!errors.phone}
+              />
+              {errors.phone && <span className="field__error">{errors.phone}</span>}
+            </label>
+
+            <label className="field">
+              <span className="field__label">
+                Role <em>*</em>
+              </span>
+              <select
+                value={values.role}
+                onChange={set('role')}
+                aria-invalid={!!errors.role}
+                className={values.role ? '' : 'is-placeholder'}
+              >
+                <option value="" disabled>
+                  Choose a role
+                </option>
+                {ROLE_OPTIONS.map((r) => (
+                  <option key={r} value={r}>
+                    {r}
+                  </option>
+                ))}
+              </select>
+              {errors.role && <span className="field__error">{errors.role}</span>}
+            </label>
+          </div>
 
           {/* Attachment dropzone */}
           <div className="field">

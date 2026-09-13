@@ -1,4 +1,5 @@
-import { INSIGHTS } from '../data/site';
+import { Link } from 'react-router-dom';
+import { INSIGHTS, readTime } from '../data/site';
 import { ArrowUpRight } from './Icons';
 import { useReveal } from './useReveal';
 import './Insights.css';
@@ -21,7 +22,7 @@ export default function Insights() {
 
         <ul className="insights__grid">
           {INSIGHTS.items.map((a) => (
-            <li key={a.title} className="post card card--hover">
+            <li key={a.slug} className="post card card--hover">
               <div className="post__media">
                 <img className="post__img" src={a.cover} alt="" loading="lazy" decoding="async" />
                 <span className="post__category">{a.category}</span>
@@ -31,15 +32,20 @@ export default function Insights() {
                 <p className="post__meta">
                   <span>{a.date}</span>
                   <span className="post__dot">·</span>
-                  <span>{a.read}</span>
+                  <span>{readTime(a.content)}</span>
                 </p>
 
-                <h3 className="post__title">{a.title}</h3>
+                {/* Stretched over the whole card — see .post__cover. */}
+                <h3 className="post__title">
+                  <Link to={`/blog/${a.slug}`} className="post__cover">
+                    {a.title}
+                  </Link>
+                </h3>
                 <p className="post__excerpt">{a.body}</p>
 
-                <a href="#contact" className="arrow-link post__link">
+                <span className="arrow-link post__link" aria-hidden="true">
                   Read the article <ArrowUpRight />
-                </a>
+                </span>
               </div>
             </li>
           ))}

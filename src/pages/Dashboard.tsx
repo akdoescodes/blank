@@ -17,6 +17,7 @@ import {
   type WorkEnquiry,
 } from '../lib/api';
 import { useAuth } from '../lib/auth';
+import { BRAND } from '../data/site';
 import './Dashboard.css';
 
 type Tab = 'interns' | 'work' | 'list';
@@ -208,7 +209,7 @@ export default function Dashboard() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    document.title = 'Dashboard — Alikima';
+    document.title = `Dashboard — ${BRAND}`;
   }, []);
 
   const load = useCallback(async () => {

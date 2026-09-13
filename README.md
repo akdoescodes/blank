@@ -1,6 +1,6 @@
-# Alikima — React + TypeScript
+# Aglowtechlabs — React + TypeScript
 
-A word-for-word clone of the nexasoftech.com homepage layout, rebranded as Alikima and restyled with the
+A word-for-word clone of the nexasoftech.com homepage layout, rebranded as Aglowtechlabs and restyled with the
 colour and typography tokens from `home-hero.html`.
 
 ## Run
@@ -66,6 +66,41 @@ per-project rate limits are the only throttle, so if the forms get spammed, add
 a captcha (Authentication → Attack Protection) or move the writes behind an Edge
 Function.
 
+## Workspace (projects, teams, tasks, attendance)
+
+An internal tool at `/app`, with one dashboard per role. Run
+[supabase/workspace.sql](supabase/workspace.sql) in the SQL editor **after**
+`schema.sql` (it is idempotent too).
+
+| Role | Can do |
+| --- | --- |
+| **Admin** | Create, edit and delete projects; pick each project's team leader; give everyone their role; see all attendance. Also has the website inbox at `/dashboard`. |
+| **Team leader** | See only the projects they lead; add employees and interns to them; create, assign and manage tasks; change project status; see their team's attendance. |
+| **Employee / intern** | Check in and out; see their projects, teammates and project tasks; change the status of tasks assigned to them. |
+| **Member** | Anyone who signed up on the site. Sees "access pending" until an admin gives them a role. |
+
+All of it is enforced in Postgres (RLS + triggers), not just hidden in the UI:
+a team leader cannot rename a project or hand it to someone else, an employee
+cannot edit a task's title or touch a teammate's task, and attendance times
+come from the server clock (one check-in per day, IST, late after 10:15). The
+workspace timezone and late threshold live in `workspace.sql`
+(`work_today()`, `guard_attendance()`).
+
+Setting up the first people: make yourself admin, then give roles from the
+admin dashboard's **People and roles** panel, or in SQL:
+
+```sql
+select public.set_user_role('leader@example.com', 'team_leader');
+select public.set_user_role('dev@example.com', 'employee');
+select public.set_user_role('new@example.com', 'intern');
+```
+
+Code: data layer [src/lib/workspace.ts](src/lib/workspace.ts); pages in
+[src/pages/app/](src/pages/app/) — `Portal` picks the dashboard by role,
+`AdminHome` / `LeaderHome` / `MemberHome`, and `ProjectPage` at
+`/app/projects/:id`. Every dashboard loads through one `loadWorkspace()` call
+and lets RLS decide what comes back.
+
 ## API
 
 Every query the site makes lives in [src/lib/api.ts](src/lib/api.ts) — submit,
@@ -110,8 +145,18 @@ constant there to rebrand the whole site, including the footer copyright.
 
 - `/` homepage
 - `/careers` careers page (open application form, hiring process, role list)
+- `/work/:slug` full case study (`cardealmakers`, `truevalueautos`, `nexora-crm`),
+  built from the same `WORK.items` entry as its homepage card — add an item with
+  a `slug` and `detail` block and its page exists. When deploying, the host must
+  fall back to `index.html` for unknown paths, or a direct link to a case study
+  will 404.
+- `/blog/:slug` full article (`shopify-ai-seo-guide`, `choosing-a-startup-tech-stack`,
+  `ai-powered-saas`), from the same `INSIGHTS.items` entry as its card. Bodies are
+  `content` blocks (`p`, `h2`, `ul`, `quote`); read time is computed from them.
+  Same `index.html` fallback applies.
 - `/login`, `/signup`, `/forgot-password`, `/reset-password` email auth
-- `/dashboard` submissions inbox — sign-in required, full contents for admins
+- `/dashboard` website submissions inbox — sign-in required, full contents for admins
+- `/app` workspace — one dashboard per role; `/app/projects/:id` for a project
 
 Routing uses react-router. Section links (`#services`, `#work`) route back to the
 homepage first when pressed from another page - see `src/components/SiteLink.tsx`.
@@ -125,8 +170,13 @@ Recognitions · Contact · Footer · Scroll-to-top
 ## Images
 
 Most artwork in [public/img/](public/img/) is placeholder SVG, so it ships with
-the repo and never depends on an external service: three product screenshots
-for the case studies, three article covers, and six testimonial avatars.
+the repo and never depends on an external service: three article covers and six
+testimonial avatars.
+
+All three case studies use real screenshots
+(`public/img/work-*.webp` / `.png`).
+Their `metrics` and `detail.results` are **placeholders** — swap in each client's real
+figures before launch, since the page presents them as measured results.
 
 The four Culture cards ([public/img/culture/](public/img/culture/)) use real
 photos instead: a sprint/demo review, the open-plan desks, a laptop-screen
@@ -136,9 +186,9 @@ the same way.
 
 ## Not wired up
 
-Nav and card links are in-page anchors, since only the homepage was cloned.
-Case-study visuals and article covers are generated placeholders rather than the
-original imagery. Nothing emails you when a submission arrives — the dashboard is
+Most nav and card links are in-page anchors, since only the homepage was cloned;
+case studies are the exception and open their own pages. Article covers are
+generated placeholders. Nothing emails you when a submission arrives — the dashboard is
 pull-only; add a Supabase database webhook or an Edge Function if you want a
 notification.
 

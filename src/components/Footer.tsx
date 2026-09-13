@@ -2,11 +2,10 @@ import { useState, type FormEvent } from 'react';
 import { CONTACT, FOOTER, NEWSLETTER, SERVICE_LINKS } from '../data/site';
 import { subscribeNewsletter } from '../lib/api';
 import { Logo } from './Header';
-import { ArrowUpRight, Mail, Social } from './Icons';
+import { ArrowUpRight, Mail } from './Icons';
 import SiteLink from './SiteLink';
 import './Footer.css';
 
-const SOCIALS = ['linkedin', 'facebook', 'x', 'instagram', 'youtube'] as const;
 
 export default function Footer() {
   const [email, setEmail] = useState('');
@@ -82,20 +81,6 @@ export default function Footer() {
               <li>
                 <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a>
               </li>
-              <li>
-                <a href={`tel:${CONTACT.phone.replace(/[^\d+]/g, '')}`}>{CONTACT.phone}</a>
-              </li>
-              <li className="footer__address">{CONTACT.address}</li>
-            </ul>
-
-            <ul className="footer__social">
-              {SOCIALS.map((s) => (
-                <li key={s}>
-                  <SiteLink to="#top" aria-label={s}>
-                    <Social name={s} />
-                  </SiteLink>
-                </li>
-              ))}
             </ul>
           </div>
 

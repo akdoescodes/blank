@@ -270,25 +270,3 @@ export const Upload = (p: P) => (
 export const Glyph = ({ name, ...p }: { name: string } & P) => (
   <svg {...base(p)}>{glyphs[name] ?? glyphs.stack}</svg>
 );
-
-/* ── Social ────────────────────────────────────────────────────────────── */
-export const Social = ({ name, ...p }: { name: string } & P) => {
-  const paths: Record<string, JSX.Element> = {
-    linkedin: <path d="M6.94 8.5H4.2V19h2.74V8.5ZM5.57 4.5a1.6 1.6 0 1 0 0 3.2 1.6 1.6 0 0 0 0-3.2ZM19.8 19h-2.74v-5.1c0-1.28-.46-2.16-1.6-2.16-.88 0-1.4.6-1.63 1.17-.08.2-.1.5-.1.79V19H11c.04-8.1 0-8.9 0-10.5h2.73v1.49c.36-.57 1.02-1.38 2.48-1.38 1.81 0 3.17 1.19 3.17 3.74V19Z" />,
-    facebook: <path d="M13.5 20v-7h2.35l.35-2.73H13.5V8.53c0-.79.22-1.33 1.35-1.33h1.44V4.76c-.25-.03-1.11-.11-2.1-.11-2.08 0-3.5 1.27-3.5 3.6v2.02H8.34V13h2.35v7h2.81Z" />,
-    x: <path d="M17.3 4.5h2.6l-5.68 6.5L21 19.5h-5.24l-4.1-5.36-4.7 5.36H4.35l6.08-6.95L4 4.5h5.37l3.71 4.9 4.22-4.9Zm-.91 13.4h1.44L8.7 6.02H7.15l9.24 11.88Z" />,
-    instagram: (
-      <>
-        <rect x="4.2" y="4.2" width="15.6" height="15.6" rx="4.6" fill="none" stroke="currentColor" strokeWidth="1.7" />
-        <circle cx="12" cy="12" r="3.6" fill="none" stroke="currentColor" strokeWidth="1.7" />
-        <circle cx="16.6" cy="7.4" r="1.05" />
-      </>
-    ),
-    youtube: <path d="M20.6 8.2a2.25 2.25 0 0 0-1.58-1.6C17.62 6.22 12 6.22 12 6.22s-5.62 0-7.02.38A2.25 2.25 0 0 0 3.4 8.2C3 9.6 3 12 3 12s0 2.4.4 3.8a2.25 2.25 0 0 0 1.58 1.6c1.4.38 7.02.38 7.02.38s5.62 0 7.02-.38a2.25 2.25 0 0 0 1.58-1.6c.4-1.4.4-3.8.4-3.8s0-2.4-.4-3.8ZM10.25 14.7V9.3L14.9 12l-4.65 2.7Z" />,
-  };
-  return (
-    <svg viewBox="0 0 24 24" fill="currentColor" width={18} height={18} {...p}>
-      {paths[name]}
-    </svg>
-  );
-};

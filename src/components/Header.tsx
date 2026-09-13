@@ -174,7 +174,7 @@ export default function Header() {
               <button className="site-header__account" onClick={() => void signOut()}>
                 Log out
               </button>
-              <SiteLink to="/dashboard" className="site-header__account is-strong">
+              <SiteLink to="/app" className="site-header__account is-strong">
                 Dashboard
               </SiteLink>
             </>
@@ -248,7 +248,7 @@ export default function Header() {
                 </button>
               </li>
               <li>
-                <SiteLink to="/dashboard" onClick={() => setMobileOpen(false)}>
+                <SiteLink to="/app" onClick={() => setMobileOpen(false)}>
                   Dashboard
                 </SiteLink>
               </li>

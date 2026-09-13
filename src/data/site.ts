@@ -2,12 +2,10 @@
  * All site copy, transcribed verbatim from nexasoftech.com.
  * Change BRAND here to rebrand the whole site in one place.
  */
-export const BRAND = 'Alikima';
+export const BRAND = 'Aglowtechlabs';
 
 export const CONTACT = {
-  email: 'contact@alikima.com',
-  phone: '(+91) 99258 76005',
-  address: 'A-510, Dev Aashish Pride & Plaza, Hanspura Crossroad, Naroda, Ahmedabad, Gujarat 382330',
+  email: 'contact@aglowtechlabs.com',
 };
 
 export const SERVICE_LINKS = [
@@ -122,6 +120,13 @@ export const PROCESS = {
   ],
 };
 
+/* Case studies. Each item drives both its card in the homepage Work section
+   and its own page at /work/<slug> (src/pages/CaseStudy.tsx).
+
+   Product descriptions are drawn from what each screenshot actually shows.
+   Every `metrics` / `detail.results` value is a PLACEHOLDER — illustrative
+   only. Replace them with each client's real figures before launch: visitors
+   read them as measured results for a named business. */
 export const WORK = {
   eyebrow: 'Featured Work',
   title: 'Products We Took from Idea to Production.',
@@ -129,37 +134,154 @@ export const WORK = {
   cta: 'See All Our Work',
   items: [
     {
-      name: 'Giveable',
-      shot: '/img/work-giveable.svg',
-      tags: ['Fundraising', 'SaaS platform'],
-      tagline: 'AI-powered fundraising for non-profits and creators',
-      body: 'A donor engagement platform that combines branded donation experiences with intelligent automation, so organisations raise more while doing less manual work.',
+      slug: 'cardealmakers',
+      name: 'CarDealmakers',
+      shot: '/img/work-cardealmakers.webp',
+      tags: ['Automotive', 'Marketplace'],
+      tagline: 'Buy, sell or exchange a car, with dealers competing for the deal',
+      body: 'A multi-dealer car marketplace where buyers post what they want and dealers bid for it, so the customer pays market price or less. One flow covers buying new, selling an old car and exchanging both, with a relationship-manager portal and WhatsApp follow-up behind every lead.',
       metrics: [
-        { value: '2.4x', label: 'more recurring donors' },
-        { value: '60%', label: 'less manual admin' },
+        { value: '3.2x', label: 'more qualified leads' },
+        { value: '41%', label: 'more deals closed' },
       ],
-      stack: 'Next.js · React · Node.js · Express',
+      stack: 'React · Node.js · WhatsApp API',
       link: 'Read the case study',
+      detail: {
+        client: 'CarDealmakers',
+        industry: 'Automotive retail',
+        region: 'India',
+        services: ['Product design', 'Web platform', 'RM portal', 'WhatsApp integration'],
+        summary:
+          'A car-buying marketplace that flips the usual dealership dynamic: the customer states what they want, and dealers compete to win the sale.',
+        challenge:
+          'Buying a new car, selling an old one and trading one against the other are usually three separate conversations, each with a different dealer and no clear view of the fair price. Buyers either shop around by phone for days or accept the first quote, and dealers spend time on enquiries that never convert.',
+        approach: [
+          {
+            title: 'One entry point for three journeys',
+            body: 'Buy New Car, Sell Old Car and Exchange Both share a single request flow, so a customer never has to know in advance which kind of deal they are after.',
+          },
+          {
+            title: 'Dealers compete, the customer chooses',
+            body: 'Each request goes out to multiple dealers as a multi-dealer offer. Pricing stays transparent, and the platform holds the line that the customer never pays extra.',
+          },
+          {
+            title: 'A relationship manager behind every lead',
+            body: 'An RM portal gives the team one queue of live requests, with WhatsApp built in so follow-up happens where customers already are.',
+          },
+        ],
+        features: [
+          { title: 'Buy, sell and exchange', body: 'Three deal types in one guided request, including a combined exchange.' },
+          { title: 'Multi-dealer offers', body: 'Requests fan out to several dealers so quotes arrive side by side.' },
+          { title: 'Transparent pricing', body: 'Market price or less, with no hidden extras added at the end.' },
+          { title: 'RM portal', body: 'Relationship managers work every request from a single dashboard.' },
+          { title: 'WhatsApp follow-up', body: 'Customers can reach the team in one tap from anywhere on the site.' },
+          { title: 'Privacy focused', body: 'Zero-spam contact handling, so a request does not become a flood of calls.' },
+        ],
+        results: [
+          { value: '3.2x', label: 'more qualified leads' },
+          { value: '41%', label: 'more deals closed' },
+          { value: '60s', label: 'to submit a request' },
+        ],
+        stack: ['React', 'Node.js', 'WhatsApp API'],
+      },
     },
     {
-      name: 'Bookify',
-      shot: '/img/work-bookify.svg',
-      tags: ['AI Document Intelligence'],
-      tagline: 'Chat with any document, book, site or video',
-      body: 'An AI knowledge platform that turns PDFs, books, websites and video into a conversation, so people get answers without searching through the source themselves.',
-      metrics: [{ value: '15s', label: 'to a cited answer' }],
-      stack: 'Next.js · React · Node.js',
+      slug: 'truevalueautos',
+      name: 'TrueValueAutos',
+      shot: '/img/work-truevalueautos.webp',
+      tags: ['Australia · B2B Automotive'],
+      tagline: 'Dealer-to-dealer car bidding across Australia',
+      body: 'A B2B trading platform for Australian dealerships. Dealers list stock, bid on each other’s cars and close purchases in one place, with live sales, bid and inventory reporting on every dealer’s dashboard.',
+      metrics: [{ value: '1,200+', label: 'dealer bids a month' }],
+      stack: 'React · Node.js',
       link: 'Case study',
+      detail: {
+        client: 'TrueValueAutos',
+        industry: 'B2B automotive trading',
+        region: 'Australia',
+        services: ['Product design', 'Web platform', 'Bidding engine', 'Dealer analytics'],
+        summary:
+          'A trade platform where Australian dealerships buy and sell stock with each other through open bidding, and see exactly how their business is performing.',
+        challenge:
+          'Dealer-to-dealer trade across Australia has long run on phone calls, spreadsheets and personal networks. Stock sits on lots longer than it should, fair trade prices are hard to judge, and a dealer has no single view of what they are selling, what they are bidding on and whether they will hit the month.',
+        approach: [
+          {
+            title: 'Listings and bids in one marketplace',
+            body: 'Dealers list stock, browse other dealers’ cars and place bids from the same account, so buying and selling are two sides of one workflow.',
+          },
+          {
+            title: 'A dashboard built for the dealer principal',
+            body: 'Total sales, cars sold, active listings and bids received sit up front, each compared against last month.',
+          },
+          {
+            title: 'Reporting that drives the next decision',
+            body: 'Top-selling makes and models, a monthly sales target and a profit-versus-cost breakdown turn activity into something a dealer can act on.',
+          },
+        ],
+        features: [
+          { title: 'My listings', body: 'Put stock in front of every dealer on the network in minutes.' },
+          { title: 'Browse cars', body: 'Search trade stock from dealerships across the country.' },
+          { title: 'My bids', body: 'Track every open bid and its status from one list.' },
+          { title: 'Purchases', body: 'A full record of completed trades for each dealership.' },
+          { title: 'Sales target tracking', body: 'Live progress against the monthly target, with last month for comparison.' },
+          { title: 'Revenue breakdown', body: 'Profit and cost over time, filterable by timeframe and exportable.' },
+        ],
+        results: [
+          { value: '1,200+', label: 'dealer bids a month' },
+          { value: '312', label: 'cars traded in a quarter' },
+          { value: '74%', label: 'of monthly target, mid-month' },
+        ],
+        stack: ['React', 'Node.js'],
+      },
     },
     {
-      name: 'Boltify',
-      shot: '/img/work-boltify.svg',
-      tags: ['Lead Automation'],
-      tagline: 'Lead discovery and outreach, automated end to end',
-      body: 'A sales automation platform that finds prospects from Google Maps data, then runs outreach, follow-ups and scheduling from one place.',
-      metrics: [{ value: '3x', label: 'more qualified meetings' }],
-      stack: 'Next.js · React · Node.js',
+      slug: 'nexora-crm',
+      name: 'Nexora CRM',
+      shot: '/img/work-nexora-crm.png',
+      tags: ['CRM · Lead Management'],
+      tagline: 'A lead CRM built around the relationship manager’s day',
+      body: 'A lead management CRM that takes a sales team from first outreach to accepted offer. Leads, customers, requests, offers and dealer quotes live in one RM portal, with priority, status and one-tap call or WhatsApp on every row.',
+      metrics: [{ value: '2x', label: 'faster lead response' }],
+      stack: 'React · Node.js',
       link: 'Case study',
+      detail: {
+        client: 'Nexora',
+        industry: 'Sales & lead management',
+        region: 'India',
+        services: ['Product design', 'CRM platform', 'Pipeline workflow', 'Calling & WhatsApp'],
+        summary:
+          'A CRM shaped around how relationship managers actually work a lead: see it, prioritise it, contact it and move it forward, without leaving the table.',
+        challenge:
+          'Leads were arriving faster than the team could work them. Enquiries, customer records, offers and dealer quotes lived in different places, so a relationship manager had to piece together each lead’s history before they could even pick up the phone, and hot leads went cold waiting.',
+        approach: [
+          {
+            title: 'The whole pipeline, in order',
+            body: 'Outreach, Leads, Customers, Requests, Offers, Dealer Quotes and Accepted Offers are tabs in the sequence a deal moves through, so the next step is always the next tab.',
+          },
+          {
+            title: 'Everything to act on, in one row',
+            body: 'Each lead shows location, requirement, interest, assigned RM, priority and status, with actions to raise a request, send an offer or mark progress.',
+          },
+          {
+            title: 'Contact without switching tools',
+            body: 'Call and WhatsApp sit on every lead, and a built-in call script keeps conversations consistent across the team.',
+          },
+        ],
+        features: [
+          { title: 'Pipeline tabs', body: 'From outreach to accepted offer, one stage per tab.' },
+          { title: 'My Leads view', body: 'Each RM sees their own queue first, filtered by status, lead type and date.' },
+          { title: 'Priority & status', body: 'Inline priority and status changes, right on the lead row.' },
+          { title: 'Offers & dealer quotes', body: 'Quotes and offers are tracked against the lead they belong to.' },
+          { title: 'Call & WhatsApp', body: 'One tap to contact a lead, straight from the table.' },
+          { title: 'Call script', body: 'A shared script on hand during every call.' },
+        ],
+        results: [
+          { value: '2x', label: 'faster lead response' },
+          { value: '35%', label: 'more leads reaching an offer' },
+          { value: '1', label: 'place for the whole pipeline' },
+        ],
+        stack: ['React', 'Node.js'],
+      },
     },
   ],
 };
@@ -272,6 +394,15 @@ export const FAQS = {
   ],
 };
 
+/* Blog. Each item drives its card in the homepage Insights section and its
+   own page at /blog/<slug> (src/pages/Article.tsx). Article bodies are
+   written for this site; `read` is derived from the body's word count. */
+export type ArticleBlock =
+  | { type: 'p'; text: string }
+  | { type: 'h2'; text: string }
+  | { type: 'ul'; items: string[] }
+  | { type: 'quote'; text: string };
+
 export const INSIGHTS = {
   eyebrow: 'Insights',
   title: 'Notes from the Build.',
@@ -279,34 +410,107 @@ export const INSIGHTS = {
   cta: 'Read All Articles',
   items: [
     {
+      slug: 'shopify-ai-seo-guide',
       category: 'E-commerce SEO',
       date: '21 May 2026',
-      read: '5 min read',
+      author: { name: `${BRAND} Engineering`, role: 'E-commerce team' },
       title: 'The Shopify AI SEO Guide: How to Get Your Store Cited on ChatGPT & Gemini',
-      body: 'Shoppers no longer type three-word keywords into Google. They ask ChatGPT, Gemini, and Perplexity full conversational questions like "find me an eco-friendly leather wallet on Shopify under $50 with fast shipping."',
-      hue: 205,
+      body: 'AI assistants now answer shopping questions directly, and they only name the stores whose product data they can read and trust. Here is how to become one of them.',
       cover: '/img/post-1.svg',
+      content: [
+        { type: 'p', text: 'A growing share of product discovery no longer starts with a search results page. People describe what they want to an AI assistant, in full sentences, with a budget and a deadline attached, and the assistant replies with a short list. If your store is not on that list, the customer never sees you. There is no page two.' },
+        { type: 'p', text: 'The good news is that the things assistants reward are mostly things a well-run Shopify store should be doing anyway. The work is less about tricks and more about making your catalogue easy for a machine to understand and easy to believe.' },
+        { type: 'h2', text: 'How an assistant decides what to recommend' },
+        { type: 'p', text: 'When an assistant answers a shopping question it is matching the constraints in the question against what it can find out about products. A request for a leather wallet under a certain price with quick delivery contains four facts to check: the category, the material, the price and the shipping promise. A product that states all four clearly, in a consistent structure, is simply easier to recommend than one that buries them in a paragraph of marketing copy.' },
+        { type: 'p', text: 'Trust matters as much as clarity. Assistants lean on signals that a store is real and that its claims hold up: reviews, a clear returns policy, contact details, and the same facts repeated consistently across your site and the places that mention you.' },
+        { type: 'h2', text: 'Make every product self-describing' },
+        { type: 'ul', items: [
+          'Write titles that name the thing, not the vibe. "Slim RFID Leather Wallet, Full-Grain, Tan" beats "The Voyager".',
+          'Put the attributes people filter by into structured fields: material, size, colour, compatibility, care. Use metafields rather than prose for anything a shopper might ask about.',
+          'Keep price, availability and shipping times accurate. A recommendation that turns out to be out of stock teaches the system to trust you less.',
+          'Answer the obvious questions on the page itself. A short FAQ block on a product often matches the exact phrasing people use with an assistant.',
+        ] },
+        { type: 'h2', text: 'Get your structured data right' },
+        { type: 'p', text: 'Most Shopify themes output some product schema, but it is often incomplete. Check that each product page exposes Product data with offers, price, currency, availability, brand and aggregate rating where you have reviews. Validate a handful of pages with a rich results testing tool, then fix the template rather than individual pages, so every new product inherits the fix.' },
+        { type: 'quote', text: 'Structured data does not make a weak product page rank. It makes a strong product page legible.' },
+        { type: 'h2', text: 'Earn mentions outside your own site' },
+        { type: 'p', text: 'Assistants form a view of your brand from more than your storefront. Honest reviews on independent platforms, inclusion in genuine comparison articles, and a consistent brand name and description across marketplaces all add up. Chasing low-quality links is a waste of time here; being described accurately by credible sources is not.' },
+        { type: 'h2', text: 'Measure what you can' },
+        { type: 'p', text: 'Attribution for AI referrals is still immature, but it is not invisible. Watch referral traffic from assistant domains in your analytics, add a "how did you hear about us" option at checkout, and periodically ask the major assistants the questions your customers ask, noting whether you appear. Treat it like any other channel: a baseline first, then one change at a time.' },
+        { type: 'p', text: 'None of this replaces good products or fair prices. It just makes sure that when you have both, the systems now standing between you and your customers can tell.' },
+      ] as ArticleBlock[],
     },
     {
+      slug: 'choosing-a-startup-tech-stack',
       category: 'Software Development',
       date: '21 Apr 2026',
-      read: '3 min read',
+      author: { name: `${BRAND} Engineering`, role: 'Product engineering team' },
       title: 'How to Choose the Right Tech Stack for Your Startup in 2026',
-      body: 'Choosing the right tech stack is one of the most critical decisions for any startup. In 2026, the technology landscape is evolving rapidly, with new frameworks, AI tools, and cloud solutions emerging constantly.',
-      hue: 175,
+      body: 'The stack that wins is rarely the most exciting one. It is the one your team can ship with this quarter and still hire for next year.',
       cover: '/img/post-2.svg',
+      content: [
+        { type: 'p', text: 'Founders ask us which framework to pick more than almost any other question, and the honest answer is that the choice matters less than the reasons behind it. Plenty of successful companies run on unfashionable technology. Plenty of failed ones had beautiful architecture. What separates them is whether the stack let the team learn from real users quickly.' },
+        { type: 'h2', text: 'Start from the constraints, not the trends' },
+        { type: 'p', text: 'Before comparing tools, write down what is actually true about your situation. Who will build this for the next twelve months? What do they already know well? How soon do you need something in front of customers? Are there hard requirements, such as regulated data, offline use or heavy real-time features, that rule options out? Those answers eliminate most of the debate before it starts.' },
+        { type: 'h2', text: 'Four questions that decide most choices' },
+        { type: 'ul', items: [
+          'Can the current team be productive in it within weeks, not months?',
+          'Can you hire for it in your market, at a salary you can afford?',
+          'Is it boring enough that the problems you hit are already solved and documented?',
+          'Does it keep your options open, or does it tie you to one vendor’s pricing and roadmap?',
+        ] },
+        { type: 'h2', text: 'A sensible default for most web products' },
+        { type: 'p', text: 'For a typical SaaS or marketplace product, a TypeScript front end in a mainstream framework, a straightforward API layer, a relational database such as Postgres and a managed cloud platform will carry you a very long way. It is not glamorous. It is widely understood, easy to hire for, and every problem you run into has been written about by someone else.' },
+        { type: 'quote', text: 'Pick technology your team will still be happy to debug at two in the morning.' },
+        { type: 'h2', text: 'Where startups usually go wrong' },
+        { type: 'p', text: 'The most common mistake is designing for scale you do not have. Microservices, event buses and multi-region setups solve real problems, but they are problems of success, and they slow a small team down long before they pay off. A well-structured monolith can be split later, once you know where the seams really are.' },
+        { type: 'p', text: 'The second mistake is adopting something new because it is new. Early adoption has a cost that rarely shows up in the demo: thin documentation, breaking changes and a small hiring pool. Save your novelty budget for the part of the product that is genuinely your competitive advantage.' },
+        { type: 'h2', text: 'Make the decision reversible where you can' },
+        { type: 'p', text: 'You will get some choices wrong. Keep that cheap by owning your data model, keeping business logic out of framework-specific corners, and putting third-party services behind thin interfaces of your own. Then revisit the stack once a year with real usage data in hand, rather than defending the decision you made with none.' },
+      ] as ArticleBlock[],
     },
     {
+      slug: 'ai-powered-saas',
       category: 'AI Development',
       date: '20 Apr 2026',
-      read: '3 min read',
+      author: { name: `${BRAND} Engineering`, role: 'AI & automation team' },
       title: 'AI-Powered SaaS: How Modern SaaS Products Are Embedding AI for Competitive Advantage',
-      body: 'The SaaS industry is undergoing a major transformation as artificial intelligence becomes a core part of modern software products. In 2026, successful SaaS platforms are no longer just feature-rich, they are intelligent, adaptive, and data-driven.',
-      hue: 145,
+      body: 'Bolting a chatbot onto a product is not an AI strategy. The SaaS products pulling ahead use AI to remove steps from the jobs their users already do.',
       cover: '/img/post-3.svg',
+      content: [
+        { type: 'p', text: 'Almost every SaaS roadmap now has an AI line item, and a lot of what ships under it is a chat box in the corner of the screen. Users try it once, find it does not know much about their account, and go back to clicking. The products that are genuinely pulling ahead have taken a different route: they start from a job the user already does and ask where a model can take a step out of it.' },
+        { type: 'h2', text: 'Start from the workflow, not the model' },
+        { type: 'p', text: 'Look at where your users spend time on work they do not value: triaging an inbox of leads, writing the same follow-up email, reconciling two reports, filling in a form from a document they already have. Those are the places where AI earns its keep, because the value is measured in minutes saved on something that happens every day.' },
+        { type: 'h2', text: 'Patterns that are working' },
+        { type: 'ul', items: [
+          'Summaries and next-best-action suggestions on records users already open, rather than a separate AI screen.',
+          'Drafting first versions of routine text, emails, notes and descriptions, that a person reviews and sends.',
+          'Extracting structured data from uploads so users stop retyping what is already in a PDF.',
+          'Search that understands the question, grounded in the customer’s own data rather than the open web.',
+        ] },
+        { type: 'h2', text: 'Your data is the moat' },
+        { type: 'p', text: 'Every competitor can call the same models. What they cannot copy is the context your product already holds about each customer. Retrieval over that data, with permissions respected so a user only ever sees what they are allowed to see, is what turns a generic model into a feature that feels like it knows the business.' },
+        { type: 'quote', text: 'The model is a commodity. The context you give it is the product.' },
+        { type: 'h2', text: 'Build for trust from day one' },
+        { type: 'p', text: 'AI features fail differently from ordinary software. They are confidently wrong rather than obviously broken. Show where an answer came from, keep a human in the loop for anything that sends, spends or deletes, and make it easy to correct the output. Log inputs and results so you can evaluate quality on real usage instead of a handful of hand-picked demos.' },
+        { type: 'h2', text: 'Watch the unit economics' },
+        { type: 'p', text: 'Model calls cost money on every use, which is new territory for products used to near-zero marginal cost. Cache what you can, use smaller models for simple steps, and decide early whether AI features are included, metered or reserved for higher plans. An AI feature that users love but that loses money on every account is not a competitive advantage for long.' },
+        { type: 'p', text: 'The winning pattern is quiet: fewer clicks, better defaults, and answers grounded in the customer’s own data. Most users will never think of it as AI at all. They will just notice the product got faster at the job they bought it for.' },
+      ] as ArticleBlock[],
     },
   ],
 };
+
+const WORDS_PER_MINUTE = 220;
+
+/** Reading time from the article's own text, so it can never drift from it. */
+export function readTime(content: ArticleBlock[]): string {
+  const text = content
+    .map((b) => (b.type === 'ul' ? b.items.join(' ') : b.text))
+    .join(' ');
+  const words = text.split(/\s+/).filter(Boolean).length;
+  return `${Math.max(1, Math.round(words / WORDS_PER_MINUTE))} min read`;
+}
 
 export const RECOGNITION = {
   title: 'Recognised Where It Counts',

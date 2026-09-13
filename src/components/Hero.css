@@ -7,12 +7,54 @@
   min-height: calc(100svh - 78px);
   overflow: hidden;
   padding: 4.5rem 0 5rem;
-  background:
-    radial-gradient(ellipse 70% 55% at 50% 0%, hsl(var(--cdm-teal-light)) 0%, transparent 70%),
-    linear-gradient(180deg, #fff 0%, hsl(var(--background)) 100%);
+  background: linear-gradient(180deg, #fff 0%, hsl(var(--background)) 100%);
 }
 @supports not (height: 100svh) {
   .hero { min-height: calc(100vh - 78px); }
+}
+
+/* ── Ambient light ──────────────────────────────────────────────────────── */
+/* Two soft brand-coloured glows, blue and green, that drift slowly on their
+   own — no cursor tracking. Each is a pseudo-element larger than the hero,
+   moved with transform only (GPU-composited, no repaint), on long offset
+   cycles so the combined light never visibly repeats. Alphas stay low so it
+   reads as lighting on the page rather than a colour gradient. */
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: -25%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.hero::before {
+  background:
+    radial-gradient(ellipse 38% 34% at 34% 28%, hsl(var(--primary) / 0.14), transparent 70%),
+    radial-gradient(ellipse 30% 26% at 70% 62%, hsl(var(--primary) / 0.06), transparent 70%);
+  animation: hero-drift-a 26s ease-in-out infinite alternate;
+}
+
+.hero::after {
+  background: radial-gradient(ellipse 34% 30% at 68% 30%, hsl(var(--cdm-green) / 0.1), transparent 70%);
+  animation: hero-drift-b 34s ease-in-out infinite alternate;
+}
+
+@keyframes hero-drift-a {
+  0%   { transform: translate3d(-6%, -3%, 0) scale(1); }
+  50%  { transform: translate3d(5%, 4%, 0) scale(1.08); }
+  100% { transform: translate3d(-2%, 6%, 0) scale(0.96); }
+}
+
+@keyframes hero-drift-b {
+  0%   { transform: translate3d(6%, 2%, 0) scale(1.04); }
+  50%  { transform: translate3d(-5%, -4%, 0) scale(0.95); }
+  100% { transform: translate3d(3%, -6%, 0) scale(1.06); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero::before,
+  .hero::after { animation: none; }
 }
 
 /* ── Headline ───────────────────────────────────────────────────────────── */

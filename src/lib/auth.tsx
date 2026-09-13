@@ -14,7 +14,8 @@ export type Profile = {
   id: string;
   email: string;
   full_name: string | null;
-  role: 'member' | 'admin';
+  /** `member` is a public signup with no workspace access yet. */
+  role: 'member' | 'admin' | 'team_leader' | 'employee' | 'intern';
   created_at: string;
 };
 

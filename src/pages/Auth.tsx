@@ -1,5 +1,6 @@
 import { useEffect, useState, type FormEvent } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { BRAND } from '../data/site';
 import { ArrowUpRight } from '../components/Icons';
 import { useAuth } from '../lib/auth';
 import { useReveal } from '../components/useReveal';
@@ -12,13 +13,13 @@ const COPY: Record<AuthMode, { eyebrow: string; title: string; lede: string; sub
   login: {
     eyebrow: 'Account',
     title: 'Sign in',
-    lede: 'Sign in to read the enquiries and applications that came in through the site.',
+    lede: 'Sign in to your workspace: projects, tasks and attendance.',
     submit: 'Sign in',
   },
   signup: {
     eyebrow: 'Account',
     title: 'Create an account',
-    lede: 'Your account starts as a member. An admin promotes it when you need the inbox.',
+    lede: 'Once you sign up, an admin gives your account its role: team leader, employee or intern.',
     submit: 'Create account',
   },
   forgot: {
@@ -53,10 +54,10 @@ export default function Auth({ mode }: { mode: AuthMode }) {
   const [busy, setBusy] = useState(false);
 
   const copy = COPY[mode];
-  const from = (location.state as { from?: string } | null)?.from ?? '/dashboard';
+  const from = (location.state as { from?: string } | null)?.from ?? '/app';
 
   useEffect(() => {
-    document.title = `${copy.title} — Alikima`;
+    document.title = `${copy.title} — ${BRAND}`;
   }, [copy.title]);
 
   // Already signed in? There is nothing to do on the login or signup page.
@@ -110,8 +111,8 @@ export default function Auth({ mode }: { mode: AuthMode }) {
         setNotice(`If ${email} has an account, a reset link is on its way.`);
       } else {
         await updatePassword(password);
-        setNotice('Password saved. Taking you to the dashboard…');
-        window.setTimeout(() => navigate('/dashboard', { replace: true }), 900);
+        setNotice('Password saved. Taking you to your workspace…');
+        window.setTimeout(() => navigate('/app', { replace: true }), 900);
       }
     } catch (err) {
       setFormError(err instanceof Error ? err.message : 'Something went wrong. Try again.');

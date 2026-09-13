@@ -212,7 +212,9 @@ input, textarea { font: inherit; color: inherit; }
   box-shadow: 0 12px 28px -8px hsl(var(--primary) / 0.55);
 }
 
-.btn--lg { padding: 1.125rem 2.5rem; font-size: 1.0625rem; }
+/* Hero CTAs. A notch tighter than it was — still clearly the biggest button on
+   the page (regular .btn--primary is 13px / 26px at 15px type). */
+.btn--lg { padding: 0.9375rem 2.125rem; font-size: 1rem; }
 .btn--block { width: 100%; }
 
 .btn--ghost {

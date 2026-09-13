@@ -6,8 +6,12 @@ import ScrollTop from './components/ScrollTop';
 import RequireAuth from './components/RequireAuth';
 import Home from './pages/Home';
 import Careers from './pages/Careers';
+import CaseStudy from './pages/CaseStudy';
+import Article from './pages/Article';
 import Auth from './pages/Auth';
 import Dashboard from './pages/Dashboard';
+import Portal from './pages/app/Portal';
+import ProjectPage from './pages/app/ProjectPage';
 import { AuthProvider } from './lib/auth';
 
 /** Land at the top of each page on navigation, unless a section was requested. */
@@ -22,6 +26,18 @@ function ScrollToTopOnNavigate() {
   return null;
 }
 
+/** The marketing footer and scroll button stay off the internal tools. */
+function SiteChrome() {
+  const { pathname } = useLocation();
+  if (pathname.startsWith('/app') || pathname.startsWith('/dashboard')) return null;
+  return (
+    <>
+      <Footer />
+      <ScrollTop />
+    </>
+  );
+}
+
 export default function App() {
   return (
     <BrowserRouter>
@@ -32,6 +48,8 @@ export default function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/careers" element={<Careers />} />
+            <Route path="/work/:slug" element={<CaseStudy />} />
+            <Route path="/blog/:slug" element={<Article />} />
             <Route path="/login" element={<Auth mode="login" />} />
             <Route path="/signup" element={<Auth mode="signup" />} />
             <Route path="/forgot-password" element={<Auth mode="forgot" />} />
@@ -45,12 +63,28 @@ export default function App() {
                 </RequireAuth>
               }
             />
+            {/* Workspace: one dashboard per role, and a page per project. */}
+            <Route
+              path="/app"
+              element={
+                <RequireAuth>
+                  <Portal />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="/app/projects/:id"
+              element={
+                <RequireAuth>
+                  <ProjectPage />
+                </RequireAuth>
+              }
+            />
             {/* Anything else falls back to the homepage. */}
             <Route path="*" element={<Home />} />
           </Routes>
         </main>
-        <Footer />
-        <ScrollTop />
+        <SiteChrome />
       </AuthProvider>
     </BrowserRouter>
   );

@@ -1,5 +1,5 @@
 -- ═══════════════════════════════════════════════════════════════════════════
---  Alikima — Supabase schema
+--  Aglowtechlabs — Supabase schema
 --  Run the whole file once in the Supabase SQL editor (Dashboard -> SQL editor
 --  -> New query -> paste -> Run). It is idempotent: re-running it is safe.
 --

@@ -1,0 +1,201 @@
+/* ── Header ─────────────────────────────────────────────────────────────── */
+.cs-hero { overflow: hidden; padding-bottom: 3rem; }
+.cs-hero__glow { --glow-x: 50%; --glow-y: 18%; --glow: hsl(var(--cdm-teal) / 0.16); }
+
+.cs-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin-bottom: 2rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--ink-72);
+  transition: color 0.18s ease, gap 0.18s ease;
+}
+.cs-back:hover { color: hsl(var(--primary)); gap: 0.6rem; }
+
+.cs-hero__tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem; }
+
+.cs-hero__title {
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  margin-bottom: 1rem;
+}
+
+.cs-hero__tagline {
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  font-weight: 500;
+  color: var(--ink-72);
+  max-width: 34ch;
+  margin-bottom: 1.25rem;
+}
+
+.cs-hero__summary {
+  max-width: 62ch;
+  font-size: 1.0625rem;
+  line-height: 1.75;
+  color: var(--body);
+  margin-bottom: 2.5rem;
+}
+
+.cs-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(0, 2fr);
+  gap: 1.25rem 2rem;
+  margin: 0 0 3rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--hairline);
+  border-bottom: 1px solid var(--hairline);
+}
+.cs-facts div { display: grid; gap: 0.3rem; }
+.cs-facts dt {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-52);
+}
+.cs-facts dd { margin: 0; font-size: 0.9875rem; font-weight: 500; color: var(--ink); }
+
+.cs-shot { max-width: 1100px; margin: 0 auto; }
+
+/* ── Results ────────────────────────────────────────────────────────────── */
+.cs-results { background: var(--footer-bg); }
+.cs-results__grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2rem;
+}
+.cs-result { display: grid; gap: 0.35rem; padding-left: 1.25rem; border-left: 2px solid hsl(var(--primary)); }
+.cs-result__value {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.4vw, 3.25rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #fff;
+}
+.cs-result__label { font-size: 0.9875rem; color: hsl(0 0% 100% / 0.72); }
+
+/* ── Challenge ──────────────────────────────────────────────────────────── */
+.cs-split__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 2rem 4rem;
+  align-items: start;
+}
+.cs-h2 {
+  font-size: clamp(1.75rem, 3.2vw, 2.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.025em;
+}
+.cs-prose { font-size: 1.125rem; line-height: 1.8; color: var(--body); }
+
+/* ── Approach ───────────────────────────────────────────────────────────── */
+.cs-approach { overflow: hidden; background: hsl(var(--cdm-teal-light) / 0.5); }
+.cs-approach__glow { --glow-x: 85%; --glow-y: 30%; --glow: hsl(var(--primary) / 0.1); }
+
+.cs-steps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+.cs-step { padding: 1.75rem; }
+.cs-step__n {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: hsl(var(--primary));
+  margin-bottom: 1rem;
+}
+.cs-step__title { font-size: 1.1875rem; line-height: 1.3; letter-spacing: -0.015em; margin-bottom: 0.625rem; }
+.cs-step__body { font-size: 0.9875rem; line-height: 1.7; color: var(--body); }
+
+/* ── Features ───────────────────────────────────────────────────────────── */
+.cs-feature-grid {
+  list-style: none;
+  margin: 0 0 3rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 2.25rem 2rem;
+}
+.cs-feature { position: relative; padding-left: 1.5rem; }
+.cs-feature__dot {
+  position: absolute;
+  left: 0;
+  top: 0.5rem;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: hsl(var(--cdm-green));
+  box-shadow: 0 0 0 4px var(--accent-2-soft);
+}
+.cs-feature__title { font-size: 1.0625rem; letter-spacing: -0.012em; margin-bottom: 0.375rem; }
+.cs-feature__body { font-size: 0.9375rem; line-height: 1.65; color: var(--body); }
+
+.cs-stack {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--hairline);
+}
+.cs-stack__label { font-size: 0.875rem; font-weight: 600; color: var(--ink-52); }
+.cs-stack ul { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+
+/* ── Next + CTA ─────────────────────────────────────────────────────────── */
+.cs-next { padding-top: 0; }
+.cs-next__inner { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.5rem; }
+
+.cs-next__card { display: flex; flex-direction: column; gap: 0.625rem; padding: 2rem; color: inherit; }
+.cs-next__eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-52);
+}
+.cs-next__name { font-family: var(--font-display); font-size: 1.75rem; font-weight: 700; letter-spacing: -0.025em; }
+.cs-next__tagline { color: var(--body); line-height: 1.6; margin-bottom: auto; padding-bottom: 1rem; }
+.cs-next__card:hover .arrow-link { color: hsl(var(--primary)); }
+
+.cs-cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.875rem;
+  padding: 2rem;
+  background: var(--footer-bg);
+  border-color: transparent;
+}
+.cs-cta__title { color: #fff; font-size: 1.75rem; letter-spacing: -0.025em; line-height: 1.2; }
+.cs-cta__body { color: hsl(0 0% 100% / 0.72); line-height: 1.65; margin-bottom: 0.5rem; }
+
+/* ── Responsive ─────────────────────────────────────────────────────────── */
+@media (max-width: 980px) {
+  .cs-facts { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .cs-facts__wide { grid-column: 1 / -1; }
+  .cs-split__inner { grid-template-columns: 1fr; }
+  .cs-steps { grid-template-columns: 1fr; }
+  .cs-feature-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cs-next__inner { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 640px) {
+  .cs-facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cs-results__grid { grid-template-columns: 1fr; gap: 1.5rem; }
+  .cs-feature-grid { grid-template-columns: 1fr; }
+  .cs-prose { font-size: 1.0625rem; }
+  .cs-next__card, .cs-cta, .cs-step { padding: 1.5rem; }
+}
