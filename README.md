@@ -124,11 +124,16 @@ Recognitions · Contact · Footer · Scroll-to-top
 
 ## Images
 
-Placeholder artwork lives in [public/img/](public/img/) as plain SVG, so it ships
-with the repo and never depends on an external service: three product
-screenshots for the case studies, four portrait culture illustrations, three
-article covers, and six testimonial avatars. Swap the files (or the paths in `src/data/site.ts`) for real assets -
-the markup already uses `<img>`.
+Most artwork in [public/img/](public/img/) is placeholder SVG, so it ships with
+the repo and never depends on an external service: three product screenshots
+for the case studies, three article covers, and six testimonial avatars.
+
+The four Culture cards ([public/img/culture/](public/img/culture/)) use real
+photos instead. Two of the four ship with the same office-desks photo — a
+sprint-review and a wireframing photo were supplied, but only one distinct
+"team at work" shot, so it covers both the "studio" and "craft" cards. Drop in
+a fourth photo and repoint its `img` in `CULTURE.items`
+([src/data/site.ts](src/data/site.ts)) to un-duplicate it.
 
 ## Not wired up
 
