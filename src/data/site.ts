@@ -71,10 +71,10 @@ export const CULTURE = {
   title: 'A Small Team That Ships Like One.',
   lede: 'How the work actually runs day to day, and the habits behind the software we hand over.',
   items: [
-    { img: '/img/culture/agile-sprint-review.webp', tag: 'Agile', title: 'Two-week sprints, in the open', body: 'A demo at the end of every sprint and a backlog you can see. You always know what shipped and what is next.' },
+    { img: '/img/culture/agile-sprint-review.webp', tag: 'Agile', title: 'Every sprint, fully open', body: 'A demo at the end of every sprint and a backlog you can see. You always know what shipped and what is next.' },
     { img: '/img/culture/studio-desks.webp', tag: 'The studio', title: 'One room, no handoffs', body: 'Engineers, designers and the founders sit together, so a decision takes minutes rather than a thread.' },
     { img: '/img/culture/craft-review.webp', tag: 'Craft', title: 'Reviewed before it ships', body: 'Every pull request is read by a senior engineer, tests run before merge, and refactors get booked like features.' },
-    { img: '/img/culture/design-wireframes.webp', tag: 'Design', title: 'Brand and build in one team', body: 'Design systems, not screenshots. What gets designed is what gets built, down to the spacing.' },
+    { img: '/img/culture/design-wireframes.webp', tag: 'Design', title: 'Brand and build together', body: 'Design systems, not screenshots. What gets designed is what gets built, down to the spacing.' },
   ],
 };
 
