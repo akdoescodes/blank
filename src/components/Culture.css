@@ -68,6 +68,9 @@
   letter-spacing: 0.02em;
 }
 
+/* Pinned to one line regardless of how long the copy runs, so the block above
+   it (the tag) sits at the same height on every card no matter the wording --
+   truncating with an ellipsis rather than wrapping to a second line. */
 .cult__title {
   font-size: 1.0625rem;
   font-weight: 600;
@@ -75,9 +78,22 @@
   letter-spacing: -0.012em;
   color: #fff;
   margin-bottom: 0.4375rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
+/* Reserved to exactly four lines, same reasoning as the title: shorter copy
+   leaves blank space instead of shrinking the block, longer copy truncates
+   with an ellipsis instead of growing it. Every card ends up the same height
+   below the title no matter how the four bodies differ in length. */
 .cult__text {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  min-height: calc(4 * 1.55em);
   font-size: 0.8125rem;
   line-height: 1.55;
   color: hsl(0 0% 100% / 0.78);
