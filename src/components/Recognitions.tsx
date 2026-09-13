@@ -20,12 +20,9 @@ function Badge({ item }: { item: BadgeItem }) {
   if (item.kind === 'shopify') {
     return (
       <span className="badge__inner badge__inner--shopify">
-        {/* The official Shopify mark, via Simple Icons. */}
+        {/* The official Shopify mark, via Simple Icons — the caption below the
+            circle already says "Shopify Partner", so the mark stands alone. */}
         <SiShopify className="badge__bag" aria-hidden="true" />
-        <span className="badge__word">
-          shopify
-          <em>partners</em>
-        </span>
       </span>
     );
   }

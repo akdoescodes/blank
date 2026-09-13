@@ -60,24 +60,16 @@
 }
 
 /* ── Shopify ────────────────────────────────────────────────────────────── */
-.badge__inner--shopify { gap: 0.5rem; grid-auto-flow: row; }
+/* The mark stands alone now (the caption below already reads "Shopify
+   Partner"), so it can fill the circle instead of sharing it with a wordmark. */
+.badge__inner--shopify { place-items: center; }
 /* react-icons renders a 1em square, so size it with font-size. */
-.badge__bag { font-size: 38px; color: #95BF47; }
-.badge__word {
-  display: grid;
-  justify-items: center;
-  font-family: var(--font-display);
-  font-size: 1.0625rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--ink);
-  line-height: 1.1;
-}
-.badge__word em { font-style: italic; font-weight: 500; font-size: 0.8125rem; color: var(--ink-72); }
+.badge__bag { font-size: 76px; color: #95BF47; }
 
 .badge__caption { font-size: 0.9375rem; color: var(--ink-72); }
 
 @media (max-width: 640px) {
   .recognitions__row { gap: 2rem; }
   .badge__inner { width: 140px; height: 140px; }
+  .badge__bag { font-size: 62px; }
 }
