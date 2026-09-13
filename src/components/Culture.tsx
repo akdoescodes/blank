@@ -86,7 +86,6 @@ export default function Culture() {
             <span className="eyebrow">{CULTURE.eyebrow}</span>
             <h2 className="display-2">{CULTURE.title}</h2>
           </div>
-          <p className="sec-head__lede">{CULTURE.lede}</p>
         </header>
 
         {/* Tablet and up: all four cards side by side. CSS swaps this for the

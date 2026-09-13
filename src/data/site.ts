@@ -68,8 +68,7 @@ export const HERO = {
 /** Portrait culture cards that sit between the hero and the services grid. */
 export const CULTURE = {
   eyebrow: `Inside ${BRAND}`,
-  title: 'A Small Team That Ships Like One.',
-  lede: 'How the work actually runs day to day, and the habits behind the software we hand over.',
+  title: 'An Agile Team That Ships Like One.',
   items: [
     { img: '/img/culture/agile-sprint-review.webp', tag: 'Agile', title: 'Two-week sprints, open', body: 'A demo at the end of every sprint and a backlog you can see. You always know what shipped and what is next.' },
     { img: '/img/culture/studio-desks.webp', tag: 'The studio', title: 'One room, no handoffs', body: 'Engineers, designers and the founders sit together, so a decision takes minutes rather than a thread, not a meeting.' },
@@ -353,7 +352,7 @@ export const CAREERS_EMAIL = `careers@${BRAND.toLowerCase()}.com`;
 
 export const CAREERS_HERO = {
   eyebrow: 'Careers',
-  title: 'Small Team. Large Surface Area.',
+  title: 'Agile Team. Large Surface Area.',
   body: 'We are early, which means the work is broad and the decisions are yours to make. If you want to build products end to end rather than fill in tickets, this is a good place to be.',
   primary: 'Send an Open Application',
   secondary: 'See How Hiring Works',
@@ -388,7 +387,7 @@ export const CAREERS_WORK = {
 export const CAREERS_FIT = {
   eyebrow: 'Fit',
   title: 'Honest About Who Thrives Here.',
-  lede: 'A small team amplifies both fit and mismatch. Read both columns before you write to us.',
+  lede: 'An agile team amplifies both fit and mismatch. Read both columns before you write to us.',
   good: {
     title: 'You Will Do Well Here If',
     items: [
@@ -445,7 +444,7 @@ export const CAREERS_FAQS = {
   items: [
     { q: 'There are no openings. Should I still apply?', a: 'Yes, and it is the best time to. We read every open application, keep it on file for six months, and reach out first when a role opens. Several of our conversations started this way.' },
     { q: 'Do you hire freshers and interns?', a: 'We do, in small numbers, because mentoring properly takes time. Show us something you built and can explain end to end. A finished small project beats a long list of tutorials.' },
-    { q: 'Is the role onsite or remote?', a: 'The role is onsite. We are a small team and the work moves faster when we are in the same office.' },
+    { q: 'Is the role onsite or remote?', a: 'The role is onsite. We are an agile team and the work moves faster when we are in the same office.' },
     { q: 'How quickly will I hear back?', a: 'Within five working days of applying, and within two days after each conversation. If the answer is no, you get the reason.' },
     { q: 'What should I send along with my CV?', a: 'A repository, a live product, or a short write-up of something you built and what was hard about it. We care far more about that than about formatting.' },
   ],
