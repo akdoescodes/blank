@@ -129,11 +129,10 @@ the repo and never depends on an external service: three product screenshots
 for the case studies, three article covers, and six testimonial avatars.
 
 The four Culture cards ([public/img/culture/](public/img/culture/)) use real
-photos instead. Two of the four ship with the same office-desks photo — a
-sprint-review and a wireframing photo were supplied, but only one distinct
-"team at work" shot, so it covers both the "studio" and "craft" cards. Drop in
-a fourth photo and repoint its `img` in `CULTURE.items`
-([src/data/site.ts](src/data/site.ts)) to un-duplicate it.
+photos instead: a sprint/demo review, the open-plan desks, a laptop-screen
+code review, and paper wireframe sketches. Swap a file (or its `img` path in
+`CULTURE.items`, [src/data/site.ts](src/data/site.ts)) for a different photo
+the same way.
 
 ## Not wired up
 
